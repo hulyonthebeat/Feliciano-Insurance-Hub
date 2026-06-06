@@ -155,6 +155,10 @@
   function esc(s){ return String(s).replace(/"/g,'&quot;'); }
 
   /* ---------------- Cookie consent ---------------- */
+  function consentGiven() {
+    try { return localStorage.getItem("jiron_cookie_consent") === "accepted"; } catch(e){ return false; }
+  }
+
   function buildConsent() {
     return `
     <div class="cookie-consent" id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
@@ -183,6 +187,14 @@
       try { localStorage.setItem("jiron_cookie_consent", val); } catch(e){}
       if (val === "accepted") {
         try { document.cookie = "jiron_consent=1; max-age=" + (60*60*24*365) + "; path=/; SameSite=Lax"; } catch(e){}
+        // Consent granted — persist the visitor's current preferences now.
+        try { localStorage.setItem("jiron_theme", window.JIRON_THEME || "brand"); } catch(e){}
+        try { localStorage.setItem("jiron_lang", window.JIRON_LANG || "en"); } catch(e){}
+      } else {
+        // Declined — store nothing: drop any saved preferences and the cookie.
+        try { localStorage.removeItem("jiron_theme"); } catch(e){}
+        try { localStorage.removeItem("jiron_lang"); } catch(e){}
+        try { document.cookie = "jiron_consent=; max-age=0; path=/; SameSite=Lax"; } catch(e){}
       }
       el.classList.remove("show");
       setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 400);
@@ -205,7 +217,7 @@
       el.setAttribute("placeholder", lang === "es" ? el.dataset.esPh : el.dataset.enPh);
     });
     document.querySelectorAll(".lang-toggle button").forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
-    try { localStorage.setItem("jiron_lang", lang); } catch(e){}
+    try { if (consentGiven()) localStorage.setItem("jiron_lang", lang); } catch(e){}
     window.JIRON_LANG = lang;
     document.dispatchEvent(new CustomEvent("jironlang", { detail: lang }));
   }
@@ -223,7 +235,8 @@
     applyTheme._init = true;
     if (theme && theme !== "brand") root.setAttribute("data-theme", theme);
     else root.removeAttribute("data-theme");
-    try { localStorage.setItem("jiron_theme", theme || "brand"); } catch(e){}
+    window.JIRON_THEME = theme || "brand";
+    try { if (consentGiven()) localStorage.setItem("jiron_theme", theme || "brand"); } catch(e){}
   }
   window.jironSetTheme = applyTheme;
 
