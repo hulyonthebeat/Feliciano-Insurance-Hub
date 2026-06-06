@@ -245,7 +245,7 @@ image-slot { display: block; }
 .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.2fr; gap: 40px; padding-bottom: 56px; }
 .site-footer h4 { color: #fff; font-family: var(--sans); font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 18px; }
 .site-footer .fbrand { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
-.site-footer .fbrand img { height: 70px; width: auto; }
+.site-footer .fbrand img { height: 88px; width: auto; }
 .site-footer .fbrand .bmark { width: 44px; height: 44px; border-radius: 10px; background: rgba(255,255,255,0.08); color: var(--accent-2); display: grid; place-items: center; font-family: var(--serif); font-weight: 600; font-size: 1.4rem; }
 .site-footer .fbrand strong { font-family: var(--serif); font-size: 1.15rem; color: #fff; }
 .site-footer p { color: var(--on-navy-muted); font-size: 0.95rem; }
