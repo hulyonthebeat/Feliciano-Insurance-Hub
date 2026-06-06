@@ -333,8 +333,8 @@ html.theme-anim .dropdown, html.theme-anim .lang-toggle, html.theme-anim .lang-t
 @keyframes vt-from-black { 0%, 50% { opacity: 0; } 100% { opacity: 1; } }
 ::view-transition { background: #000; }
 ::view-transition-group(root) { animation: none; }
-::view-transition-old(root)  { animation: vt-to-black   .4s ease-in-out both; mix-blend-mode: normal; }
-::view-transition-new(root)  { animation: vt-from-black .4s ease-in-out both; mix-blend-mode: normal; }
+::view-transition-old(root)  { animation: vt-to-black   .7s ease-in-out both; mix-blend-mode: normal; }
+::view-transition-new(root)  { animation: vt-from-black .7s ease-in-out both; mix-blend-mode: normal; }
 
 /* Fade each page in on load. Disabled where View Transitions are supported so
    navigations aren't double-faded (the crossfade above handles those). */
