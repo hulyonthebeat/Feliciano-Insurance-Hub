@@ -182,7 +182,7 @@ image-slot { display: block; }
 
 .navrow { display: flex; align-items: center; justify-content: space-between; height: 78px; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand img.blogo { height: 46px; width: auto; }
+.brand img.blogo { height: 46px; width: auto; opacity: 1 !important; animation: none !important; transition: none !important; }
 .brand .btext .fn { color: var(--accent-deep); }
 .brand .btext .jn { color: var(--red); }
 .brand .bmark { width: 46px; height: 46px; border-radius: 11px; background: var(--ink); color: var(--accent-2); display: grid; place-items: center; font-family: var(--serif); font-weight: 600; font-size: 1.5rem; box-shadow: var(--shadow-sm); }
