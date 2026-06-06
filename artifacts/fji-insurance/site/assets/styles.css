@@ -324,11 +324,18 @@ html.theme-anim .dropdown, html.theme-anim .lang-toggle, html.theme-anim .lang-t
 body { animation: pageIn .34s ease both; }
 html.is-leaving body { animation: none; opacity: 0; transition: opacity .26s ease; }
 
+/* Seamless image loading: photos fade in once decoded instead of popping in.
+   JS adds .img-fade ONLY to images that are still loading, so cached images
+   stay instant and a JS failure can never hide an image. */
+img.img-fade { opacity: 0; transition: opacity .55s ease; }
+img.img-fade.is-loaded { opacity: 1; }
+
 @media (prefers-reduced-motion: reduce){
   .reveal, .reveal.in { opacity: 1 !important; animation: none !important; transform: none !important; }
   html { scroll-behavior: auto; }
   body { animation: none !important; }
   html.is-leaving body { transition: none !important; opacity: 1 !important; }
+  img.img-fade { opacity: 1 !important; transition: none !important; }
   .btn-primary::after, .btn-dark::after, .btn-on-navy::after { display: none; }
   .btn:active { transform: none; }
   .nav-link::after { transition: none; }

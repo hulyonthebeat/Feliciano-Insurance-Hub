@@ -361,6 +361,28 @@
       document.documentElement.classList.remove("is-leaving");
     });
 
+    // Seamless photo loading: fade each image in once it has decoded instead of
+    // letting it pop in. Only applied to images still loading, so cached images
+    // stay instant and a JS failure never hides anything.
+    if (!reduceMotion) {
+      const fadeImg = (img) => {
+        if (img.dataset.fadeInit) return;
+        img.dataset.fadeInit = "1";
+        if (img.complete && img.naturalWidth > 0) return; // already loaded
+        img.classList.add("img-fade");
+        let done = false;
+        const reveal = () => { if (done) return; done = true; img.classList.add("is-loaded"); };
+        // Reveal on whichever fires first: decode() resolving, the load/error
+        // events, or a hard timeout — so a hung decode can never leave an image
+        // stuck invisible.
+        if (img.decode) img.decode().then(reveal).catch(reveal);
+        img.addEventListener("load", reveal, { once: true });
+        img.addEventListener("error", reveal, { once: true });
+        setTimeout(reveal, 3000);
+      };
+      document.querySelectorAll("img").forEach(fadeImg);
+    }
+
     document.dispatchEvent(new CustomEvent("jironready"));
     buildTweaks();
   }
