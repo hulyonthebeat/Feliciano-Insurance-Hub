@@ -147,6 +147,7 @@
       <div class="footer-bottom">
         <span>© 2025–2026 Feliciano Jiron Insurance Agency</span>
         <span data-es="No compartimos información móvil con terceros para marketing.">We do not share mobile information with third parties for marketing.</span>
+        <span class="powered-by">Powered by 511 Tech Labs</span>
       </div>
     </div>`;
   }

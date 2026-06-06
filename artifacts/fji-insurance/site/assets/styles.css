@@ -261,6 +261,7 @@ image-slot { display: block; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 22px 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--on-navy-muted); font-size: 0.85rem; }
 .footer-bottom a { color: var(--on-navy-muted); }
 .footer-bottom a:hover { color: var(--accent-2); }
+.footer-bottom .powered-by { color: var(--accent-2); font-weight: 600; letter-spacing: .02em; }
 @media (max-width: 900px){ .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
 @media (max-width: 540px){ .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1 / -1; } }
 
