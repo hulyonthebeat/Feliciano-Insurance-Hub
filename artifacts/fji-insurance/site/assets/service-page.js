@@ -29,8 +29,7 @@
         <div class="wrap svc-detail-grid">
           <div class="svc-detail-copy reveal">
             <div class="sd-ic">${I[d.icon]}</div>
-            <h2 data-es="${esc(d.es)}">${esc(d.name)}</h2>
-            <p class="sd-lead" data-es="${esc(d.eslead)}">${esc(d.lead)}</p>
+            <h2 data-es="Qué cubre">What's covered</h2>
             <ul class="sd-list">
               ${d.pts.map(p => `<li><span class="ck">${I.check}</span><span data-es="${esc(p[1])}">${esc(p[0])}</span></li>`).join("")}
             </ul>
