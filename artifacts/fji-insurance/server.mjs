@@ -21,16 +21,15 @@ const app = express();
 
 const router = express.Router();
 
-// The "/services" overview lives in `services.html`, which collides with the
-// `services/<id>` subpage directory. express.static would 301 "/services" to
-// "/services/" (a directory with no index file) and 404. Serve the overview
-// for BOTH "/services" and "/services/" directly (no redirect) — services.html
-// carries <base href="/"> so its assets resolve from "/" at either URL. We must
-// NOT redirect between the two: browsers may have permanently cached the old
-// serve-static "/services" -> "/services/" 301, and a server redirect the other
-// way would create an infinite loop ("redirected you too many times").
+// The "/services" overview lives in `services/index.html` so that it resolves
+// natively on any static host (production serves dist/public as plain static
+// files — no custom routes run there). express.static serves the directory
+// index for "/services/" automatically; we also answer "/services" with the
+// same file (no redirect) so dev never bounces, even for browsers that cached
+// an old "/services" <-> "/services/" 301 from earlier iterations. The page
+// carries <base href="/"> so its assets resolve from "/" at either URL.
 router.get(["/services", "/services/"], (req, res, next) => {
-  res.sendFile(path.join(siteDir, "services.html"), (err) => {
+  res.sendFile(path.join(siteDir, "services", "index.html"), (err) => {
     if (err) next(err);
   });
 });
