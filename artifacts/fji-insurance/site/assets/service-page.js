@@ -50,12 +50,7 @@
               ${(sec.list && sec.list.length) ? `<ul class="si-list">${sec.list.map(li => `<li data-es="${esc(li[1])}">${li[0]}</li>`).join("")}</ul>` : ""}
             </article>`).join("")}
         </div>
-      </section>` : ""}
-      <section class="sd-quote-end">
-        <div class="wrap center reveal">
-          <a class="btn btn-primary btn-lg" href="quote.html#${d.id}" data-es="Cotizar ${esc(d.es)}">Quote ${esc(shortName)}</a>
-        </div>
-      </section>`;
+      </section>` : ""}`;
 
     const others = document.getElementById("svc-others");
     if (others) others.innerHTML = SV.filter(s => s.id !== id).map(s =>
