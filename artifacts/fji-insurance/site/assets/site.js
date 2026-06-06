@@ -271,18 +271,11 @@
       b.addEventListener("click", () => applyLang(b.dataset.lang));
     });
 
-    // scroll shadow + reading-progress bar
+    // scroll shadow
     const hdr = header;
-    const prog = document.createElement("div");
-    prog.className = "scroll-progress";
-    prog.setAttribute("aria-hidden", "true");
-    document.body.appendChild(prog);
     let ticking = false;
     const render = () => {
       if (hdr) hdr.classList.toggle("scrolled", window.scrollY > 8);
-      const doc = document.documentElement;
-      const max = doc.scrollHeight - doc.clientHeight;
-      prog.style.transform = "scaleX(" + (max > 0 ? Math.max(0, Math.min(window.scrollY / max, 1)) : 0) + ")";
       ticking = false;
     };
     const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(render); } };
