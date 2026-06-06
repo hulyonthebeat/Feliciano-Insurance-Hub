@@ -271,7 +271,7 @@
       b.addEventListener("click", () => applyLang(b.dataset.lang));
     });
 
-    // scroll shadow
+    // scroll shadow + reading-progress bar
     const hdr = header;
     let ticking = false;
     const render = () => {
