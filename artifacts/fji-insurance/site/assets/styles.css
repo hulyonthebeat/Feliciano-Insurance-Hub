@@ -323,17 +323,18 @@ html.theme-anim .dropdown, html.theme-anim .lang-toggle, html.theme-anim .lang-t
    without support just navigate instantly and still get the pageIn fade below. */
 @view-transition { navigation: auto; }
 
-/* Make it a smooth, noticeable cross-fade IN PLACE. By default the root layer
-   also morphs its size/position between pages — so pages of different heights
-   appeared to resize/shift mid-transition, which read as a "jump". We disable
-   that group morph and just cross-fade opacity (keeping the browser's dip-free
-   plus-lighter blending), over a longer, eased duration so the fade is clearly
-   visible instead of feeling like an abrupt swap. */
-@keyframes vt-fade-out { to { opacity: 0; } }
-@keyframes vt-fade-in  { from { opacity: 0; } }
+/* Smooth, noticeable fade THROUGH BLACK (not white). The pages all use a light
+   background, so an overlapping cross-fade momentarily showed white. Instead we
+   sequence it: the old page fades out to black, then the new page fades in from
+   black, with a full-viewport black backdrop behind both during the dip. We also
+   disable the root group's size/position morph so pages of different heights
+   don't resize/shift mid-transition (the black dip hides any layout change). */
+@keyframes vt-to-black   { 0% { opacity: 1; } 50%, 100% { opacity: 0; } }
+@keyframes vt-from-black { 0%, 50% { opacity: 0; } 100% { opacity: 1; } }
+::view-transition { background: #000; }
 ::view-transition-group(root) { animation: none; }
-::view-transition-old(root)  { animation: vt-fade-out .5s ease-in-out both; }
-::view-transition-new(root)  { animation: vt-fade-in  .5s ease-in-out both; }
+::view-transition-old(root)  { animation: vt-to-black   .6s ease-in-out both; mix-blend-mode: normal; }
+::view-transition-new(root)  { animation: vt-from-black .6s ease-in-out both; mix-blend-mode: normal; }
 
 /* Fade each page in on load. Disabled where View Transitions are supported so
    navigations aren't double-faded (the crossfade above handles those). */
