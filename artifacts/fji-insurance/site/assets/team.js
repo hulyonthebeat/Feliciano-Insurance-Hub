@@ -1,5 +1,7 @@
 /* ===== Team member bios + subpage renderer ===== */
 (function () {
+  var BASE_URL = "https://felicianoinsurancehub.replit.app";
+
   const MEMBERS = {
     "feliciano-jiron": {
       name: "Feliciano Jiron", role: ["Agency Owner", "Dueño de la Agencia"], photo: "assets/img/feliciano.png", photoWebp: "assets/img/feliciano.webp",
@@ -68,6 +70,13 @@
   };
   window.JIRON_MEMBERS = MEMBERS;
 
+  function injectSchema(data) {
+    var el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.textContent = JSON.stringify(data);
+    document.head.appendChild(el);
+  }
+
   function render() {
     const id = document.body.getAttribute("data-member");
     const m = MEMBERS[id];
@@ -101,6 +110,20 @@
         </div>
       </section>`;
     document.title = m.name + " — Feliciano Jiron Insurance Agency";
+
+    // BreadcrumbList structured data (only if not already in static HTML)
+    if (!document.querySelector('script[type="application/ld+json"]')) {
+      injectSchema({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL + "/" },
+          { "@type": "ListItem", position: 2, name: "About Us", item: BASE_URL + "/about" },
+          { "@type": "ListItem", position: 3, name: m.name, item: BASE_URL + "/" + id }
+        ]
+      });
+    }
+
     if (window.JIRON_LANG) window.jironSetLang(window.JIRON_LANG);
     const io = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }), { threshold: 0.1 });
     document.querySelectorAll(".reveal:not(.in)").forEach(el => io.observe(el));

@@ -29,6 +29,32 @@
 <link rel="preload" as="image" href="assets/img/logo-emblem.png?v=5" fetchpriority="high" />
 <link rel="stylesheet" href="assets/styles.css?v=24" />
 <link rel="stylesheet" href="assets/pages.css?v=4" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://felicianoinsurancehub.replit.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://felicianoinsurancehub.replit.app/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Auto Insurance",
+      "item": "https://felicianoinsurancehub.replit.app/services/auto"
+    }
+  ]
+}
+</script>
 <script>try{var t=localStorage.getItem('jiron_theme');if(t&&t!=='navy')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
 <body data-page="services" data-service="auto">
@@ -37,10 +63,43 @@
 <div class="mobile-nav" id="mobile-nav"></div>
 
 <section class="page-hero">
-  <div class="wrap" id="svc-hero"></div>
+  <div class="wrap" id="svc-hero">
+      <div class="ph-crumb"><a href="index.html" data-es="Inicio">Home</a><span class="sep">/</span><a href="services.html" data-es="Servicios">Services</a><span class="sep">/</span><span data-es="Seguro de Auto">Auto</span></div>
+      <span class="eyebrow" data-es="Cobertura">Coverage</span>
+      <h1 data-es="Seguro de Auto">Auto Insurance</h1>
+      <p class="ph-sub" data-es="Desde tu trayecto diario hasta los viajes de fin de semana, encontramos cobertura que te protege a ti, a tus pasajeros y a tu bolsillo.">From your daily commute to weekend road trips, we'll find coverage that protects you, your passengers, and your wallet.</p>
+      <div class="ph-cta">
+        <a class="btn btn-on-navy btn-lg" href="quote.html#auto" data-es="Cotizar Seguro de Auto">Quote Auto</a>
+        <a class="btn btn-outline-navy btn-lg" href="tel:7025220079" data-es="Llama (702) 522-0079">Call (702) 522-0079</a>
+      </div>
+  </div>
 </section>
 
-<div id="svc-detail"></div>
+<div id="svc-detail">
+      <section class="svc-detail">
+        <div class="wrap svc-detail-grid">
+          <div class="svc-detail-copy">
+            <h2 data-es="Qué cubre">What's covered</h2>
+            <ul class="sd-list">
+        <li><span data-es="Responsabilidad y cobertura total">Liability &amp; full coverage</span></li>
+        <li><span data-es="Conductor sin seguro">Uninsured motorist</span></li>
+        <li><span data-es="Asistencia en carretera">Roadside assistance</span></li>
+        <li><span data-es="Autos nuevos y clásicos">New &amp; classic vehicles</span></li>
+        <li><span data-es="Trámites SR-22">SR-22 filings</span></li>
+        <li><span data-es="Descuentos multi-auto">Multi-car discounts</span></li>
+            </ul>
+          </div>
+          <div class="svc-detail-media">
+            <img class="sd-photo" src="assets/img/svc-auto.png" alt="Auto Insurance" />
+            <div class="sd-fact"><strong>55+</strong><span class="sf-div"></span><span data-es="Descuentos 55+">Driver discounts</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="svc-info"><div class="wrap svc-info-wrap"><article class="si-block"><h2 data-es="¿Cómo funciona el seguro de auto?">How does Auto Insurance work?</h2><p data-es="El seguro de auto brinda protección financiera si tu vehículo se daña o tienes un accidente. Pagas una prima mensual o anual a la aseguradora y, a cambio, te ayudan a cubrir gastos como reparaciones, facturas médicas o responsabilidad civil si causas daños a terceros. Los tipos de cobertura incluyen responsabilidad civil, colisión, cobertura amplia y protección contra conductores sin seguro, para resguardarte de gastos inesperados en la carretera.">Auto insurance works by providing financial protection if your car is damaged or you're involved in an accident. You pay a monthly or annual premium to an insurance company, and in return, they help cover costs such as repairs, medical bills, or liability if you cause damage to others. Coverage types can include liability, collision, comprehensive, and uninsured motorist protection, ensuring you're safeguarded against unexpected expenses on the road.</p></article>
+          <article class="si-block"><h2 data-es="¿Cuánto cuesta el seguro de auto en Nevada?">How much is Auto Insurance in Nevada?</h2><p data-es="En Nevada, el costo promedio del seguro de auto varía según el nivel de cobertura y varios factores personales. Los conductores pueden esperar pagar entre $2,400 y $3,300 al año por cobertura total, que incluye responsabilidad civil, colisión y cobertura amplia. Quienes eligen la cobertura mínima de responsabilidad civil suelen gastar entre $700 y $1,500 al año. Las tarifas dependen de factores como la ubicación — las zonas urbanas como Las Vegas y Henderson suelen tener primas más altas —, el historial de manejo, el puntaje crediticio y el tipo de vehículo. En general, los costos en Nevada tienden a estar por encima del promedio nacional debido al tráfico denso y a una mayor tasa de accidentes.">In Nevada, the average cost of auto insurance varies depending on the level of coverage and several personal factors. Drivers can expect to pay around $2,400 to $3,300 per year for full coverage, which includes liability, collision, and comprehensive protection. Those who choose minimum liability coverage typically spend between $700 and $1,500 annually. Rates can differ based on factors such as location — urban areas like Las Vegas and Henderson often have higher premiums — along with driving history, credit score, and the type of vehicle insured. Overall, costs in Nevada tend to be above the national average due to dense traffic areas and higher accident rates.</p></article>
+          <article class="si-block"><h2 data-es="¿Cómo funcionan los deducibles de auto?">How do Auto Deductibles work?</h2><p data-es="Un deducible de seguro de auto es la cantidad que pagas de tu bolsillo antes de que el seguro cubra el resto de un reclamo. Por ejemplo, si tienes un deducible de $500 y daños por $3,000, pagas $500 y tu aseguradora paga los $2,500 restantes. Un deducible más alto suele reducir tu prima mensual, mientras que uno más bajo la aumenta pero reduce tus gastos tras un accidente. Los deducibles normalmente se aplican a la cobertura de colisión y amplia, no a la de responsabilidad civil.">An auto insurance deductible is the amount you pay out of pocket before your insurance covers the rest of a claim. For example, if you have a $500 deductible and $3,000 in damages, you'll pay $500 while your insurer pays the remaining $2,500. Choosing a higher deductible typically lowers your monthly premium, while a lower deductible raises it but reduces your costs after an accident. Deductibles usually apply to collision and comprehensive coverage, not liability insurance.</p></article>
+          <article class="si-block"><h2 data-es="¿Por qué aumentan los deducibles del seguro de auto?">Why do Auto Insurance Deductibles increase?</h2><p data-es="Los deducibles del seguro de auto pueden aumentar por varias razones, como el alza en los costos de reparación, la inflación o cambios en tu póliza para reducir tu prima mensual. Algunos conductores también eligen subir su deducible para bajar sus pagos de seguro, aceptando un mayor costo de su bolsillo en caso de un reclamo.">Auto insurance deductibles may increase for several reasons, such as rising repair costs, inflation, or changes in your policy to lower your monthly premium. Some drivers also choose to raise their deductible to reduce their insurance payments, accepting a higher out-of-pocket cost in the event of a claim.</p></article></div></section>
+</div>
 
 <!-- other services -->
 <section class="section-sm" style="padding:40px 0;border-bottom:1px solid var(--line)">

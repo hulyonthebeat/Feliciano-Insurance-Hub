@@ -29,6 +29,32 @@
 <link rel="preload" as="image" href="assets/img/logo-emblem.png?v=5" fetchpriority="high" />
 <link rel="stylesheet" href="assets/styles.css?v=24" />
 <link rel="stylesheet" href="assets/pages.css?v=4" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://felicianoinsurancehub.replit.app/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Services",
+      "item": "https://felicianoinsurancehub.replit.app/services"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Boat Insurance",
+      "item": "https://felicianoinsurancehub.replit.app/services/boat"
+    }
+  ]
+}
+</script>
 <script>try{var t=localStorage.getItem('jiron_theme');if(t&&t!=='navy')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
 <body data-page="services" data-service="boat">
@@ -37,10 +63,41 @@
 <div class="mobile-nav" id="mobile-nav"></div>
 
 <section class="page-hero">
-  <div class="wrap" id="svc-hero"></div>
+  <div class="wrap" id="svc-hero">
+      <div class="ph-crumb"><a href="index.html" data-es="Inicio">Home</a><span class="sep">/</span><a href="services.html" data-es="Servicios">Services</a><span class="sep">/</span><span data-es="Seguro de Embarcación">Boat</span></div>
+      <span class="eyebrow" data-es="Cobertura">Coverage</span>
+      <h1 data-es="Seguro de Embarcación">Boat Insurance</h1>
+      <p class="ph-sub" data-es="Disfruta el Lago Mead con confianza. Cubrimos tu embarcación, tu equipo y tu tiempo en el agua.">Hit Lake Mead with confidence. We cover your boat, your gear, and your time on the water.</p>
+      <div class="ph-cta">
+        <a class="btn btn-on-navy btn-lg" href="quote.html#boat" data-es="Cotizar Seguro de Embarcación">Quote Boat</a>
+        <a class="btn btn-outline-navy btn-lg" href="tel:7025220079" data-es="Llama (702) 522-0079">Call (702) 522-0079</a>
+      </div>
+  </div>
 </section>
 
-<div id="svc-detail"></div>
+<div id="svc-detail">
+      <section class="svc-detail">
+        <div class="wrap svc-detail-grid">
+          <div class="svc-detail-copy">
+            <h2 data-es="Qué cubre">What's covered</h2>
+            <ul class="sd-list">
+        <li><span data-es="Casco y motor">Hull &amp; motor</span></li>
+        <li><span data-es="Responsabilidad en el agua">On-water liability</span></li>
+        <li><span data-es="Cobertura de remolque">Trailer coverage</span></li>
+        <li><span data-es="Efectos personales">Personal effects</span></li>
+        <li><span data-es="Remolque y asistencia">Towing &amp; assistance</span></li>
+        <li><span data-es="Opciones por temporada">Seasonal options</span></li>
+            </ul>
+          </div>
+          <div class="svc-detail-media">
+            <img class="sd-photo" src="assets/img/svc-boat.png" alt="Boat Insurance" />
+            <div class="sd-fact"><strong>Lake</strong><span class="sf-div"></span><span data-es="Mead y más">Mead &amp; beyond</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="svc-info"><div class="wrap svc-info-wrap"><article class="si-block"><h2 data-es="¿Qué es el seguro de embarcación?">What is Boat Insurance?</h2><p data-es="El seguro de embarcación protege tu bote y tus finanzas. Ayuda a pagar los daños a tu embarcación por accidentes, tormentas, incendios o robo. También cubre lesiones a terceros o daños que puedas causar mientras estás en el agua. Puedes añadir cobertura extra para cosas como remolque, pertenencias personales o botes alquilados.">Boat insurance protects your boat and your finances. It helps pay for damage to your boat from accidents, storms, fire, or theft. It also covers injuries to others or damage you might cause while on the water. You can add extra coverage for things like towing, personal belongings, or rental boats.</p></article>
+          <article class="si-block"><h2 data-es="¿Qué cubre el seguro de embarcación?">What does Boat Insurance cover?</h2><ul class="si-list"><li data-es="&lt;strong&gt;Daños físicos&lt;/strong&gt; — reparación o reemplazo si tu bote se daña por colisiones, tormentas, incendio, robo o vandalismo."><strong>Physical damage</strong> — repairs or replacement if your boat is damaged by collisions, storms, fire, theft, or vandalism.</li><li data-es="&lt;strong&gt;Responsabilidad civil&lt;/strong&gt; — costos si lesionas accidentalmente a alguien o dañas la propiedad de otra persona mientras navegas."><strong>Liability</strong> — costs if you accidentally injure someone or damage another person's property while boating.</li><li data-es="&lt;strong&gt;Pagos médicos&lt;/strong&gt; — cubre las facturas médicas tuyas o de los pasajeros lesionados en tu bote."><strong>Medical payments</strong> — covers medical bills for you or passengers injured on your boat.</li><li data-es="&lt;strong&gt;Cobertura contra navegantes sin seguro&lt;/strong&gt; — protección si otro navegante causa un accidente y no tiene seguro."><strong>Uninsured boater coverage</strong> — protection if another boater causes an accident and doesn't have insurance.</li><li data-es="&lt;strong&gt;Complementos opcionales&lt;/strong&gt; — como remolque y asistencia, pertenencias personales en el bote o reembolso por bote alquilado."><strong>Optional add-ons</strong> — things like towing and assistance, personal belongings on the boat, or rental boat reimbursement.</li></ul></article></div></section>
+</div>
 
 <!-- other services -->
 <section class="section-sm" style="padding:40px 0;border-bottom:1px solid var(--line)">

@@ -1,9 +1,57 @@
 /* ===== Single blog post renderer ===== */
 (function () {
+  var BASE_URL = "https://felicianoinsurancehub.replit.app";
   function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  function postHref(slug){ return "posts/" + encodeURIComponent(slug); }
+
+  function injectSchema(type, data) {
+    var el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.textContent = JSON.stringify(data);
+    document.head.appendChild(el);
+  }
+
   function run() {
     var I = window.JIRON_ICONS || {};
     var P = window.JIRON_POSTS || [];
+
+    // --- Individual post page mode (posts/slug.html) ---
+    var bodySlug = document.body.getAttribute("data-slug");
+    if (bodySlug) {
+      var post = P.filter(function (p) { return p.slug === bodySlug; })[0];
+      if (!post) return;
+
+      // Inject related articles
+      var related = P.filter(function (p) { return p.slug !== post.slug && p.cat[0] === post.cat[0]; });
+      if (related.length < 3) related = related.concat(P.filter(function (p) { return p.slug !== post.slug && related.indexOf(p) < 0; }));
+      related = related.slice(0, 3);
+      if (related.length) {
+        var relHTML = related.map(function (p) {
+          return '<a class="blog-card reveal" href="' + postHref(p.slug) + '">' +
+            '<div class="blog-thumb has-img" style="background-image:url(\'' + p.img + '\')"><span class="cat-tag" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92)" data-es="' + esc(p.cat[1]) + '">' + esc(p.cat[0]) + '</span></div>' +
+            '<div class="blog-body"><span class="blog-date">' + esc(p.date) + '</span><h3>' + esc(p.title) + '</h3>' +
+            '<span class="svc-more" data-es="Leer más">Read more ' + (I.arrow||'') + '</span></div></a>';
+        }).join("");
+        var relHost = document.getElementById("post-related");
+        if (relHost) {
+          relHost.innerHTML =
+            '<section class="section" style="background:var(--paper-2)">' +
+              '<div class="wrap">' +
+                '<div class="sec-head related-head"><span class="eyebrow" data-es="Sigue leyendo">Keep reading</span><h2 class="h2" data-es="Artículos relacionados">Related articles</h2></div>' +
+                '<div class="related-grid">' + relHTML + '</div>' +
+              '</div>' +
+            '</section>';
+        }
+      }
+
+      if (window.JIRON_LANG) window.jironSetLang(window.JIRON_LANG);
+      window.scrollTo(0, 0);
+      var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }); }, { threshold: 0.1 });
+      document.querySelectorAll(".reveal:not(.in)").forEach(function (el) { io.observe(el); });
+      return;
+    }
+
+    // --- Legacy shared template mode (post.html?slug=...) ---
     var host = document.getElementById("post-page");
     if (!host) return;
     var slug = new URLSearchParams(location.search).get("slug");
@@ -16,7 +64,7 @@
     related = related.slice(0, 3);
 
     var relHTML = related.map(function (p) {
-      return '<a class="blog-card reveal" href="post?slug=' + encodeURIComponent(p.slug) + '">' +
+      return '<a class="blog-card reveal" href="' + postHref(p.slug) + '">' +
         '<div class="blog-thumb has-img" style="background-image:url(\'' + p.img + '\')"><span class="cat-tag" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92)" data-es="' + esc(p.cat[1]) + '">' + esc(p.cat[0]) + '</span></div>' +
         '<div class="blog-body"><span class="blog-date">' + esc(p.date) + '</span><h3>' + esc(p.title) + '</h3>' +
         '<span class="svc-more" data-es="Leer más">Read more ' + (I.arrow||'') + '</span></div></a>';
@@ -49,6 +97,41 @@
       '</section>' : "");
 
     document.title = post.title + " — Feliciano Jiron Insurance Agency";
+
+    // BlogPosting structured data
+    injectSchema("BlogPosting", {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: post.title,
+      description: post.excerpt,
+      datePublished: post.ts,
+      image: BASE_URL + "/" + post.img,
+      articleSection: post.cat[0],
+      mainEntityOfPage: location.href,
+      author: {
+        "@type": "Organization",
+        name: "Feliciano Jiron Insurance Agency",
+        url: BASE_URL
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Feliciano Jiron Insurance Agency",
+        url: BASE_URL
+      }
+    });
+
+    // BreadcrumbList structured data
+    injectSchema("BreadcrumbList", {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL + "/" },
+        { "@type": "ListItem", position: 2, name: "Blog", item: BASE_URL + "/blog" },
+        { "@type": "ListItem", position: 3, name: post.cat[0], item: BASE_URL + "/blog" },
+        { "@type": "ListItem", position: 4, name: post.title, item: location.href }
+      ]
+    });
+
     if (window.JIRON_LANG) window.jironSetLang(window.JIRON_LANG);
     window.scrollTo(0, 0);
     var io = new IntersectionObserver(function (es) { es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } }); }, { threshold: 0.1 });

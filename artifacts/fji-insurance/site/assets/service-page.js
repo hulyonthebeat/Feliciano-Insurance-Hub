@@ -1,5 +1,14 @@
 /* ===== Individual service subpage renderer ===== */
 (function () {
+  var BASE_URL = "https://felicianoinsurancehub.replit.app";
+
+  function injectSchema(data) {
+    var el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.textContent = JSON.stringify(data);
+    document.head.appendChild(el);
+  }
+
   function run() {
     const I = window.JIRON_ICONS;
     const DET = window.JIRON_SERVICE_DETAILS || [];
@@ -55,6 +64,19 @@
     const others = document.getElementById("svc-others");
     if (others) others.innerHTML = SV.filter(s => s.id !== id).map(s =>
       `<a class="pill-trust" href="${s.file}"><span style="width:20px;height:20px;display:grid;place-items:center;color:var(--accent-deep)">${I[s.icon]}</span><span data-es="${esc(s.es)} Seguro">${s.name} Insurance</span></a>`).join("");
+
+    // BreadcrumbList structured data (only if not already present in static HTML)
+    if (!document.querySelector('script[type="application/ld+json"]')) {
+      injectSchema({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: BASE_URL + "/" },
+          { "@type": "ListItem", position: 2, name: "Services", item: BASE_URL + "/services" },
+          { "@type": "ListItem", position: 3, name: d.name, item: BASE_URL + "/services/" + d.id }
+        ]
+      });
+    }
 
     if (window.JIRON_LANG) window.jironSetLang(window.JIRON_LANG);
     const io = new IntersectionObserver((es) => es.forEach(en => { if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }}), { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });

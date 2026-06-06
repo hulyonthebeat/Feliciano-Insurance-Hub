@@ -1,6 +1,7 @@
 /* ===== Blog list — renders all real posts from blog-data.js ===== */
 (function () {
   function esc(s){ return String(s == null ? "" : s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;"); }
+  function postHref(slug){ return "posts/" + encodeURIComponent(slug); }
   function run() {
     var I = window.JIRON_ICONS || {};
     var P = (window.JIRON_POSTS || []).slice();
@@ -9,7 +10,7 @@
     var feat = P[0], rest = P.slice(1);
 
     var featHTML =
-      '<a class="blog-feature reveal" href="post?slug=' + encodeURIComponent(feat.slug) + '">' +
+      '<a class="blog-feature reveal" href="' + postHref(feat.slug) + '">' +
         '<div class="bf-thumb has-img" style="background-image:url(\'' + feat.img + '\')"></div>' +
         '<div class="bf-body">' +
           '<div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">' +
@@ -23,10 +24,8 @@
       '</a>';
 
     var cardsHTML = rest.map(function (p, i) {
-      return '<a class="blog-card reveal" href="post?slug=' + encodeURIComponent(p.slug) + '"' + (i ? ' data-delay="' + ((i % 3) * 70) + '"' : '') + '>' +
-        '<div class="blog-thumb has-img" style="background-image:url(\'' + p.img + '\')">' +
-          '<span class="cat-tag" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92)" data-es="' + esc(p.cat[1]) + '">' + esc(p.cat[0]) + '</span>' +
-        '</div>' +
+      return '<a class="blog-card reveal" href="' + postHref(p.slug) + '"' + (i ? ' data-delay="' + ((i % 3) * 70) + '"' : '') + '>' +
+        '<div class="blog-thumb has-img" style="background-image:url(\'' + p.img + '\')"><span class="cat-tag" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92)" data-es="' + esc(p.cat[1]) + '">' + esc(p.cat[0]) + '</span></div>' +
         '<div class="blog-body">' +
           '<span class="blog-date">' + esc(p.date) + '</span>' +
           '<h3>' + esc(p.title) + '</h3>' +
