@@ -52,6 +52,7 @@
 .si-block h2 { font-size: clamp(1.35rem, 2.4vw, 1.8rem); margin-bottom: 16px; color: var(--ink); }
 .si-block p { color: var(--muted); font-size: 1.05rem; line-height: 1.72; margin-bottom: 14px; }
 .si-block p:last-child { margin-bottom: 0; }
+.sd-quote-end { padding: 0 0 80px; }
 .si-list { list-style: none; display: grid; gap: 14px; margin-top: 18px; }
 .si-list li { position: relative; padding-left: 30px; color: var(--text); font-size: 1.02rem; line-height: 1.6; }
 .si-list li::before { content: ""; position: absolute; left: 6px; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-deep); }

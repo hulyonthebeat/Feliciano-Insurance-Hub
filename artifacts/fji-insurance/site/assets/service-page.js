@@ -33,7 +33,6 @@
             <ul class="sd-list">
               ${d.pts.map(p => `<li><span class="ck">${I.check}</span><span data-es="${esc(p[1])}">${esc(p[0])}</span></li>`).join("")}
             </ul>
-            <a class="btn btn-primary" href="quote.html#${d.id}" data-es="Cotizar ${esc(d.es)}">Quote ${esc(shortName)}</a>
           </div>
           <div class="svc-detail-media reveal" data-delay="120">
             <img class="sd-photo" src="assets/img/svc-${d.id}.png" alt="${esc(d.name)}" />
@@ -51,7 +50,12 @@
               ${(sec.list && sec.list.length) ? `<ul class="si-list">${sec.list.map(li => `<li data-es="${esc(li[1])}">${li[0]}</li>`).join("")}</ul>` : ""}
             </article>`).join("")}
         </div>
-      </section>` : ""}`;
+      </section>` : ""}
+      <section class="sd-quote-end">
+        <div class="wrap center reveal">
+          <a class="btn btn-primary btn-lg" href="quote.html#${d.id}" data-es="Cotizar ${esc(d.es)}">Quote ${esc(shortName)}</a>
+        </div>
+      </section>`;
 
     const others = document.getElementById("svc-others");
     if (others) others.innerHTML = SV.filter(s => s.id !== id).map(s =>
