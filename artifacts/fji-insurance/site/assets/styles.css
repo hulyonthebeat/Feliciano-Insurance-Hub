@@ -350,6 +350,22 @@ img.img-fade.is-loaded { opacity: 1; }
   .pill-trust, .tag, .card, .svc-card { transition: none !important; }
 }
 
+/* Touch devices have no true hover, so a hover "lift" transform would stick
+   after a tap and make the motion look broken. Neutralize those transforms when
+   there is no hover-capable pointer. Page transitions, reveal-on-scroll and
+   image fades are unaffected and continue to run on mobile. */
+@media (hover: none){
+  .btn-primary:hover, .btn-dark:hover, .btn-on-navy:hover,
+  .pill-trust:hover, .fsocial a:hover, .social-btn:hover,
+  .svc-card:hover, .svc-card:hover .svc-more svg,
+  .team-card:hover, .team-card:hover .team-photo,
+  .blog-card:hover, .blog-card:hover .svc-more svg,
+  .blog-feature:hover .svc-more svg, .ci-card:hover, .q-cov:hover {
+    transform: none !important;
+  }
+  .site-footer ul a:hover { padding-left: 0 !important; }
+}
+
 /* utility */
 .center { text-align: center; }
 .mxauto { margin-left: auto; margin-right: auto; }
