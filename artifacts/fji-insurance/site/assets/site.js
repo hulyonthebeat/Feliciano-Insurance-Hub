@@ -329,42 +329,12 @@
       if (!w) window.location.href = href;
     });
 
-    // Page navigation crossfade: fade the current page out, then navigate.
     const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // Touch devices keep the current page on screen until the next one is ready,
-    // so fading out to blank before navigating just shows a jarring white flash
-    // during the (slower) mobile page load. Only run the fade-OUT where there is a
-    // real hover pointer (desktop); the CSS fade-IN (pageIn) still runs everywhere.
-    const noHover = window.matchMedia && window.matchMedia("(hover: none)").matches;
-    if (!reduceMotion && !noHover) {
-      document.addEventListener("click", (e) => {
-        if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-        if (!e.target || !e.target.closest) return;
-        const a = e.target.closest("a");
-        if (!a) return;
-        if (a.target === "_blank" || a.hasAttribute("download")) return;
-        const href = a.getAttribute("href");
-        if (!href || href.charAt(0) === "#") return;
-        const proto = (a.protocol || "").toLowerCase();
-        if (proto === "mailto:" || proto === "tel:" || proto === "javascript:") return;
-        let url;
-        try { url = new URL(a.href, window.location.href); } catch (err) { return; }
-        if (url.origin !== window.location.origin) return;
-        // Same-page (hash/query only) — let the browser handle it without a fade.
-        if (url.pathname === window.location.pathname && url.hash) return;
-        // No-op navigation to the exact same URL — skip the fade/reload entirely.
-        if (url.href === window.location.href) return;
-        e.preventDefault();
-        document.documentElement.classList.add("is-leaving");
-        // Wait the full fade-out (CSS opacity .26s) plus a small buffer before navigating.
-        setTimeout(() => { window.location.href = a.href; }, 280);
-      });
-    }
-    // Restore visibility when returning via the back/forward (bfcache) so a
-    // page restored mid-fade is never left blank.
-    window.addEventListener("pageshow", (e) => {
-      document.documentElement.classList.remove("is-leaving");
-    });
+    // Page-to-page crossfade is handled natively by the cross-document View
+    // Transitions API (see `@view-transition` in styles.css). The browser
+    // snapshots the old page and crossfades to the new one with no blank/white
+    // frame, on mobile and desktop alike, and degrades to an instant navigation
+    // on browsers without support. No JS fade-out hack is needed.
 
     // Seamless photo loading: fade each image in once it has decoded instead of
     // letting it pop in. Only applied to images still loading, so cached images
