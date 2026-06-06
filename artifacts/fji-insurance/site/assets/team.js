@@ -2,7 +2,7 @@
 (function () {
   const MEMBERS = {
     "feliciano-jiron": {
-      name: "Feliciano Jiron", role: ["Agency Owner", "Dueño de la Agencia"], photo: "assets/img/feliciano.png",
+      name: "Feliciano Jiron", role: ["Agency Owner", "Dueño de la Agencia"], photo: "assets/img/feliciano.png", photoWebp: "assets/img/feliciano.webp",
       tags: ["Español", "English", "Auto", "Home", "Life"],
       bio_en: [
         "Feliciano Jiron is a dedicated and knowledgeable insurance agent driven by a genuine passion for helping individuals, families, and business owners protect what matters most. With comprehensive expertise across multiple lines of insurance — including auto, home, life, and pet coverage — Feliciano is committed to delivering personalized solutions that meet each client's unique needs, lifestyle, and long-term goals.",
@@ -20,7 +20,7 @@
       ]
     },
     "maxwell-saavedra": {
-      name: "Maxwell Saavedra", role: ["Insurance Agent", "Agente de Seguros"], photo: "assets/img/maxwell.png",
+      name: "Maxwell Saavedra", role: ["Insurance Agent", "Agente de Seguros"], photo: "assets/img/maxwell.png", photoWebp: "assets/img/maxwell.webp",
       tags: ["Español", "English", "Licensed in 31 states", "Health & Life"],
       bio_en: [
         "With nearly three years of experience in the insurance industry, Maxwell has built a strong foundation in Health & Life coverage and is now expanding his expertise to include Auto & Property insurance. Based in Nevada and licensed across 31 states, Maxwell takes pride in helping individuals and families find coverage that fits their unique needs.",
@@ -34,7 +34,7 @@
       ]
     },
     "engelbert-mora": {
-      name: "Engelbert Mora", role: ["Insurance Agent", "Agente de Seguros"], photo: "assets/img/engelbert.png",
+      name: "Engelbert Mora", role: ["Insurance Agent", "Agente de Seguros"], photo: "assets/img/engelbert.png", photoWebp: "assets/img/engelbert.webp",
       tags: ["Español", "English"],
       bio_en: [
         "What inspired Engelbert to enter the insurance industry was the understanding that insurance is something everyone needs — regardless of the economy. He wanted a career that offers long-term stability, growth, and a healthy work-life balance, and has found all of that within this field.",
@@ -50,7 +50,7 @@
       ]
     },
     "gunnar-jiron": {
-      name: "Gunnar Jiron", role: ["Marketing Director", "Director de Marketing"], photo: "assets/img/gunnar.png",
+      name: "Gunnar Jiron", role: ["Marketing Director", "Director de Marketing"], photo: "assets/img/gunnar.png", photoWebp: "assets/img/gunnar.webp",
       tags: ["Español", "English", "Community"],
       bio_en: [
         "Gunnar Jiron serves as the Marketing and Outreach Coordinator for Feliciano Jiron Insurance Agency, bringing energy, creativity, and a strong sense of community to the team. Originally from New Mexico and now based in the City of Las Vegas, Gunnar is passionate about connecting people with the resources and support they need to make informed insurance decisions.",
@@ -88,7 +88,10 @@
       <section class="section">
         <div class="wrap member-grid">
           <aside class="member-aside">
-            <img class="member-photo" src="${m.photo}" alt="${esc(m.name)}" />
+            <picture>
+              <source type="image/webp" srcset="${m.photoWebp}" />
+              <img class="member-photo" src="${m.photo}" alt="${esc(m.name)}" />
+            </picture>
             <a class="member-back" href="about.html#team" data-es="← Volver al equipo">← Back to the team</a>
           </aside>
           <div class="member-bio">

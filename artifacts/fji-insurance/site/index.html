@@ -25,6 +25,7 @@
 <link rel="manifest" href="site.webmanifest?v=1" />
 <meta name="theme-color" content="#0c2747" />
 <link rel="preload" as="image" href="assets/img/logo-emblem.png?v=5" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/img/team-group.webp" fetchpriority="high" imagesrcset="assets/img/team-group-800.webp 800w, assets/img/team-group.webp 1600w" imagesizes="100vw" />
 <link rel="stylesheet" href="assets/styles.css?v=24" />
 <link rel="stylesheet" href="assets/home.css?v=3" />
 <script>try{var t=localStorage.getItem('jiron_theme');if(t&&t!=='navy')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
@@ -37,7 +38,10 @@
 <!-- ===================== HERO ===================== -->
 <section class="hero">
   <div class="hero-banner">
-    <img decoding="async" fetchpriority="high" loading="eager" src="assets/img/team-group.png" alt="The Feliciano Jiron Insurance Agency team" />
+    <picture>
+      <source type="image/webp" srcset="assets/img/team-group-800.webp 800w, assets/img/team-group.webp 1600w" sizes="100vw" />
+      <img decoding="async" fetchpriority="high" loading="eager" src="assets/img/team-group.png" alt="The Feliciano Jiron Insurance Agency team" width="1600" height="734" />
+    </picture>
   </div>
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap hero-intro">
@@ -87,7 +91,10 @@
 <section class="section why" >
   <div class="wrap why-grid">
     <div class="why-media reveal">
-      <img decoding="async" class="why-photo" src="assets/img/feliciano.png" alt="Feliciano Jiron, Agency Owner" loading="lazy" />
+      <picture>
+        <source type="image/webp" srcset="assets/img/feliciano.webp" />
+        <img decoding="async" class="why-photo" src="assets/img/feliciano.png" alt="Feliciano Jiron, Agency Owner" loading="lazy" width="600" height="582" />
+      </picture>
       <div class="why-float card">
         <span class="stars" id="why-stars"></span>
         <p data-es="“Se tomaron el tiempo de explicarme cada parte de mi póliza.”">"They took the time to walk me through every part of my policy."</p>
