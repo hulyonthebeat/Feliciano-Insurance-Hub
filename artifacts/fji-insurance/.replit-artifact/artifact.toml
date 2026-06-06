@@ -23,6 +23,30 @@ publicDir = "artifacts/fji-insurance/dist/public"
 serve = "static"
 
 [[services.production.rewrites]]
+from = "/services/auto"
+to = "/services/auto.html"
+
+[[services.production.rewrites]]
+from = "/services/home"
+to = "/services/home.html"
+
+[[services.production.rewrites]]
+from = "/services/life"
+to = "/services/life.html"
+
+[[services.production.rewrites]]
+from = "/services/business"
+to = "/services/business.html"
+
+[[services.production.rewrites]]
+from = "/services/renters"
+to = "/services/renters.html"
+
+[[services.production.rewrites]]
+from = "/services/boat"
+to = "/services/boat.html"
+
+[[services.production.rewrites]]
 from = "/*"
 to = "/index.html"
 

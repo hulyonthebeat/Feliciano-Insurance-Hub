@@ -3,5 +3,6 @@
   "installCommand": "echo \"No install needed\"",
   "buildCommand": "echo \"No build step — serving committed static site\"",
   "outputDirectory": "artifacts/fji-insurance/site",
-  "framework": null
+  "framework": null,
+  "cleanUrls": true
 }

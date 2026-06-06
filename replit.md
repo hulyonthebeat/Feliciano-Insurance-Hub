@@ -38,6 +38,8 @@ _Populate as you build — explicit user instructions worth remembering across s
 ## Gotchas
 
 - Asset and inter-page links are relative, so the site must be served at the root (`/`) base path.
+- Each insurance service is its own subpage at `site/services/<id>.html`, served at a clean URL `/services/<id>` (no `.html`). Dev resolves this via Express `static({ extensions: ["html"] })`; production via Vercel `cleanUrls: true`. These subpages include `<base href="/">` so the depth-0 relative links emitted by the shared `site.js` (header/footer/nav) still resolve from the site root.
+- Service links live in one place: the `SERVICES[].file` field in `assets/site.js` (e.g. `services/auto`). Header dropdown, mobile nav, footer, homepage cards, and the services overview all read from it.
 
 ## Pointers
 
