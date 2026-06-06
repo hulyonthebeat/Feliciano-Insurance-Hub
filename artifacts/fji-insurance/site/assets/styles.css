@@ -317,9 +317,18 @@ html.theme-anim .dropdown, html.theme-anim .lang-toggle, html.theme-anim .lang-t
   transition: background-color .45s ease, border-color .45s ease, color .45s ease, box-shadow .45s ease;
 }
 
+/* Page navigation crossfade: every page fades in on load (CSS-only, so it
+   never gets stuck invisible); JS adds html.is-leaving to fade out before
+   navigating to the next page. */
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+body { animation: pageIn .34s ease both; }
+html.is-leaving body { animation: none; opacity: 0; transition: opacity .26s ease; }
+
 @media (prefers-reduced-motion: reduce){
   .reveal, .reveal.in { opacity: 1 !important; animation: none !important; transform: none !important; }
   html { scroll-behavior: auto; }
+  body { animation: none !important; }
+  html.is-leaving body { transition: none !important; opacity: 1 !important; }
   .btn-primary::after, .btn-dark::after, .btn-on-navy::after { display: none; }
   .btn:active { transform: none; }
   .nav-link::after { transition: none; }
