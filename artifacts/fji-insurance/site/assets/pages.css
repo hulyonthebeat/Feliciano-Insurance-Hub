@@ -45,6 +45,18 @@
   .sd-list { grid-template-columns: 1fr; }
 }
 
+/* Service info — detailed explainer sections */
+.svc-info { padding: 76px 0; }
+.svc-info-wrap { max-width: 820px; }
+.si-block + .si-block { margin-top: 44px; padding-top: 44px; border-top: 1px solid var(--line); }
+.si-block h2 { font-size: clamp(1.35rem, 2.4vw, 1.8rem); margin-bottom: 16px; color: var(--ink); }
+.si-block p { color: var(--muted); font-size: 1.05rem; line-height: 1.72; margin-bottom: 14px; }
+.si-block p:last-child { margin-bottom: 0; }
+.si-list { list-style: none; display: grid; gap: 14px; margin-top: 18px; }
+.si-list li { position: relative; padding-left: 30px; color: var(--text); font-size: 1.02rem; line-height: 1.6; }
+.si-list li::before { content: ""; position: absolute; left: 6px; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-deep); }
+.si-list li strong { color: var(--ink); }
+
 /* About / team */
 .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 .team-card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); transition: transform .25s, box-shadow .25s; }

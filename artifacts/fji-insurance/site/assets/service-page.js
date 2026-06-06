@@ -41,7 +41,18 @@
             <div class="sd-fact"><strong>${esc(d.fact[0])}</strong><span class="sf-div"></span><span data-es="${esc(d.fact[2])}">${esc(d.fact[1])}</span></div>
           </div>
         </div>
-      </section>`;
+      </section>
+      ${(d.sections && d.sections.length) ? `
+      <section class="svc-info">
+        <div class="wrap svc-info-wrap">
+          ${d.sections.map(sec => `
+            <article class="si-block reveal">
+              <h2 data-es="${esc(sec.h[1])}">${sec.h[0]}</h2>
+              ${(sec.p || []).map(p => `<p data-es="${esc(p[1])}">${p[0]}</p>`).join("")}
+              ${(sec.list && sec.list.length) ? `<ul class="si-list">${sec.list.map(li => `<li data-es="${esc(li[1])}">${li[0]}</li>`).join("")}</ul>` : ""}
+            </article>`).join("")}
+        </div>
+      </section>` : ""}`;
 
     const others = document.getElementById("svc-others");
     if (others) others.innerHTML = SV.filter(s => s.id !== id).map(s =>
