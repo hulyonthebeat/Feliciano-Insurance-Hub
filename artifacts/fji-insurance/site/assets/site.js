@@ -39,12 +39,12 @@
   const MAPS = "https://www.google.com/maps/place/2585+S+Nellis+Blvd,+Las+Vegas,+NV+89121";
 
   const SERVICES = [
-    { id: "auto", icon: "auto", name: "Auto", es: "Auto", file: "services.html#auto", blurb: "Coverage that keeps you moving — from liability to full coverage.", esblurb: "Cobertura que te mantiene en movimiento — de responsabilidad a cobertura total." },
-    { id: "home", icon: "home", name: "Home", es: "Hogar", file: "services.html#home", blurb: "Protect your biggest investment against the unexpected.", esblurb: "Protege tu mayor inversión contra lo inesperado." },
-    { id: "life", icon: "life", name: "Life", es: "Vida", file: "services.html#life", blurb: "Peace of mind for the people who depend on you.", esblurb: "Tranquilidad para las personas que dependen de ti." },
-    { id: "business", icon: "business", name: "Business", es: "Negocio", file: "services.html#business", blurb: "Tailored protection so your business keeps running.", esblurb: "Protección a medida para que tu negocio siga funcionando." },
-    { id: "renters", icon: "renters", name: "Renters", es: "Inquilinos", file: "services.html#renters", blurb: "Affordable coverage for everything inside your four walls.", esblurb: "Cobertura accesible para todo dentro de tu hogar." },
-    { id: "boat", icon: "boat", name: "Boat", es: "Embarcación", file: "services.html#boat", blurb: "Hit the lake with confidence and on-water protection.", esblurb: "Disfruta del lago con confianza y protección en el agua." },
+    { id: "auto", icon: "auto", name: "Auto", es: "Auto", file: "service-auto.html", blurb: "Coverage that keeps you moving — from liability to full coverage.", esblurb: "Cobertura que te mantiene en movimiento — de responsabilidad a cobertura total." },
+    { id: "home", icon: "home", name: "Home", es: "Hogar", file: "service-home.html", blurb: "Protect your biggest investment against the unexpected.", esblurb: "Protege tu mayor inversión contra lo inesperado." },
+    { id: "life", icon: "life", name: "Life", es: "Vida", file: "service-life.html", blurb: "Peace of mind for the people who depend on you.", esblurb: "Tranquilidad para las personas que dependen de ti." },
+    { id: "business", icon: "business", name: "Business", es: "Negocio", file: "service-business.html", blurb: "Tailored protection so your business keeps running.", esblurb: "Protección a medida para que tu negocio siga funcionando." },
+    { id: "renters", icon: "renters", name: "Renters", es: "Inquilinos", file: "service-renters.html", blurb: "Affordable coverage for everything inside your four walls.", esblurb: "Cobertura accesible para todo dentro de tu hogar." },
+    { id: "boat", icon: "boat", name: "Boat", es: "Embarcación", file: "service-boat.html", blurb: "Hit the lake with confidence and on-water protection.", esblurb: "Disfruta del lago con confianza y protección en el agua." },
   ];
   window.JIRON_SERVICES = SERVICES;
   window.JIRON_INFO = { LOGO, PHONE, PHONE_RAW, ADDR, MAPS, I };

@@ -310,3 +310,20 @@ image-slot { display: block; }
 .tw-seg { display: flex; border: 1.5px solid var(--line); border-radius: 10px; overflow: hidden; }
 .tw-seg button { flex: 1; padding: 9px; background: var(--paper); border: none; font-weight: 700; font-size: 0.85rem; color: var(--muted); }
 .tw-seg button.on { background: var(--ink); color: #fff; }
+
+/* SERVICES GRID */
+.svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+.svc-card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px; transition: transform .25s, box-shadow .25s, border-color .25s; overflow: hidden; display: block; }
+.svc-card::after { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 0; background: var(--accent); transition: width .3s; }
+.svc-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.svc-card:hover::after { width: 100%; }
+.svc-ic { width: 56px; height: 56px; border-radius: 15px; background: var(--paper); border: 1px solid var(--line); color: var(--accent-deep); display: grid; place-items: center; margin-bottom: 20px; transition: background .25s, color .25s; }
+.svc-ic svg { width: 28px; height: 28px; }
+.svc-card:hover .svc-ic { background: var(--ink); color: var(--accent-2); border-color: var(--ink); }
+.svc-card h3 { font-size: 1.4rem; margin-bottom: 9px; }
+.svc-card p { color: var(--muted); font-size: 0.96rem; margin-bottom: 16px; }
+.svc-more { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; font-size: 0.86rem; color: var(--accent-deep); text-transform: uppercase; letter-spacing: .05em; }
+.svc-more svg { width: 15px; height: 15px; transition: transform .2s; }
+.svc-card:hover .svc-more svg { transform: translateX(4px); }
+@media (max-width: 880px){ .svc-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px){ .svc-grid { grid-template-columns: 1fr; } }

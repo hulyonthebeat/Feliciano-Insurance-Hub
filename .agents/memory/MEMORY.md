@@ -1,1 +1,2 @@
 - [Vercel static deploy](vercel-static-deploy.md) — deploy fji-insurance to Vercel by serving committed site/ directly, no build; dashboard Root Directory drives output path.
+- [FJI Insurance site conventions](fji-insurance.md) — service links from JIRON_SERVICES; data-es i18n; manual ?v= cache-busting; shared CSS in styles.css
