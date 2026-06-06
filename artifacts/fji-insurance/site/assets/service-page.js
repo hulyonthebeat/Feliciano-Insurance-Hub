@@ -14,12 +14,12 @@
 
     const hero = document.getElementById("svc-hero");
     if (hero) hero.innerHTML = `
-      <div class="ph-crumb"><a href="index.html" data-es="Inicio">Home</a><span class="sep">/</span><a href="services.html" data-es="Servicios">Services</a><span class="sep">/</span><span data-es="${esc(sv.es || d.es)}">${esc(shortName)}</span></div>
+      <div class="ph-crumb"><a href="/" data-es="Inicio">Home</a><span class="sep">/</span><a href="services" data-es="Servicios">Services</a><span class="sep">/</span><span data-es="${esc(sv.es || d.es)}">${esc(shortName)}</span></div>
       <span class="eyebrow" data-es="Cobertura">Coverage</span>
       <h1 data-es="${esc(d.es)}">${esc(d.name)}</h1>
       <p class="ph-sub" data-es="${esc(d.eslead)}">${esc(d.lead)}</p>
       <div class="ph-cta">
-        <a class="btn btn-on-navy btn-lg" href="quote.html#${d.id}" data-es="Cotizar ${esc(d.es)}">Quote ${esc(shortName)}</a>
+        <a class="btn btn-on-navy btn-lg" href="quote#${d.id}" data-es="Cotizar ${esc(d.es)}">Quote ${esc(shortName)}</a>
         <a class="btn btn-outline-navy btn-lg" href="tel:7025220079" data-es="Llama (702) 522-0079">Call (702) 522-0079</a>
       </div>`;
 

@@ -80,7 +80,7 @@
     host.innerHTML = `
       <section class="page-hero member-hero">
         <div class="wrap">
-          <div class="ph-crumb"><a href="index.html" data-es="Inicio">Home</a><span class="sep">/</span><a href="about.html" data-es="Nosotros">About Us</a><span class="sep">/</span><span>${m.name}</span></div>
+          <div class="ph-crumb"><a href="/" data-es="Inicio">Home</a><span class="sep">/</span><a href="about" data-es="Nosotros">About Us</a><span class="sep">/</span><span>${m.name}</span></div>
           <span class="eyebrow" data-es="${esc(m.role[1])}">${m.role[0]}</span>
           <h1>${m.name}</h1>
         </div>
@@ -92,7 +92,7 @@
               <source type="image/webp" srcset="${m.photoWebp}" />
               <img class="member-photo" src="${m.photo}" alt="${esc(m.name)}" />
             </picture>
-            <a class="member-back" href="about.html#team" data-es="← Volver al equipo">← Back to the team</a>
+            <a class="member-back" href="about#team" data-es="← Volver al equipo">← Back to the team</a>
           </aside>
           <div class="member-bio">
             <h2 data-es="Acerca de ${esc(first)}">About ${first}</h2>

@@ -66,27 +66,27 @@
       </div>
     </div>
     <div class="navrow wrap">
-      <a class="brand" href="index.html" aria-label="Feliciano Jiron Insurance Agency">
+      <a class="brand" href="/" aria-label="Feliciano Jiron Insurance Agency">
         <img class="blogo" data-nofade fetchpriority="high" decoding="async" src="assets/img/logo-emblem.png?v=5" alt="" />
         <span class="btext"><strong><span class="fn">Feliciano</span> <span class="jn">Jiron</span></strong><span data-es="Agencia de Seguros">Insurance Agency</span></span>
       </a>
       <nav class="nav">
-        ${link("index.html","Home","Inicio","home")}
+        ${link("/","Home","Inicio","home")}
         <div class="nav-item">
-          <a class="nav-link${page==='services'?' active':''}" href="services.html" data-es="Servicios">Services <span class="chev">${I.chev}</span></a>
+          <a class="nav-link${page==='services'?' active':''}" href="services" data-es="Servicios">Services <span class="chev">${I.chev}</span></a>
           <div class="dropdown">${sv}</div>
         </div>
-        ${link("about.html","About","Nosotros","about")}
-        ${link("blog.html","Blog","Blog","blog")}
-        ${link("social-media.html","Social Media","Redes Sociales","social")}
-        ${link("contact.html","Contact","Contacto","contact")}
+        ${link("about","About","Nosotros","about")}
+        ${link("blog","Blog","Blog","blog")}
+        ${link("social-media","Social Media","Redes Sociales","social")}
+        ${link("contact","Contact","Contacto","contact")}
       </nav>
       <div class="nav-actions">
         <div class="lang-toggle" role="group" aria-label="Language">
           <button data-lang="en">EN</button>
           <button data-lang="es">ES</button>
         </div>
-        <a class="btn btn-primary" href="quote.html" data-es="Cotización Gratis">${I.shield}Free Quote</a>
+        <a class="btn btn-primary" href="quote" data-es="Cotización Gratis">${I.shield}Free Quote</a>
         <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
       </div>
     </div>`;
@@ -96,14 +96,14 @@
     const sv = SERVICES.map(s => `<a class="sub" href="${s.file}" data-es="${s.es} Seguro">${s.name} Insurance</a>`).join("");
     return `<div class="scrim"></div><div class="panel">
       <div style="display:flex"><button class="mclose" aria-label="Close">✕</button></div>
-      <a href="index.html" data-es="Inicio">Home</a>
-      <a href="services.html" data-es="Servicios">Services</a>
+      <a href="/" data-es="Inicio">Home</a>
+      <a href="services" data-es="Servicios">Services</a>
       ${sv}
-      <a href="about.html" data-es="Nosotros">About Us</a>
-      <a href="blog.html" data-es="Blog">Blog</a>
-      <a href="social-media.html" data-es="Redes Sociales">Social Media</a>
-      <a href="contact.html" data-es="Contacto">Contact</a>
-      <a class="btn btn-primary" style="margin-top:18px;width:100%" href="quote.html" data-es="Cotización Gratis">Free Quote</a>
+      <a href="about" data-es="Nosotros">About Us</a>
+      <a href="blog" data-es="Blog">Blog</a>
+      <a href="social-media" data-es="Redes Sociales">Social Media</a>
+      <a href="contact" data-es="Contacto">Contact</a>
+      <a class="btn btn-primary" style="margin-top:18px;width:100%" href="quote" data-es="Cotización Gratis">Free Quote</a>
       <a class="btn btn-ghost" style="margin-top:10px;width:100%" href="tel:${PHONE_RAW}">${I.phone} ${PHONE}</a>
     </div>`;
   }
@@ -130,11 +130,11 @@
         <div>
           <h4 data-es="Agencia">Agency</h4>
           <ul>
-            <li><a href="about.html" data-es="Nosotros">About Us</a></li>
-            <li><a href="blog.html" data-es="Blog">Blog</a></li>
-            <li><a href="social-media.html" data-es="Redes Sociales">Social Media</a></li>
-            <li><a href="quote.html" data-es="Cotización Gratis">Free Quote</a></li>
-            <li><a href="contact.html" data-es="Contacto">Contact</a></li>
+            <li><a href="about" data-es="Nosotros">About Us</a></li>
+            <li><a href="blog" data-es="Blog">Blog</a></li>
+            <li><a href="social-media" data-es="Redes Sociales">Social Media</a></li>
+            <li><a href="quote" data-es="Cotización Gratis">Free Quote</a></li>
+            <li><a href="contact" data-es="Contacto">Contact</a></li>
           </ul>
         </div>
         <div>

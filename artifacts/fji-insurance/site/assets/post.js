@@ -8,7 +8,7 @@
     if (!host) return;
     var slug = new URLSearchParams(location.search).get("slug");
     var post = P.filter(function (p) { return p.slug === slug; })[0] || P[0];
-    if (!post) { host.innerHTML = '<section class="section"><div class="wrap"><p>Post not found. <a href="blog.html">Back to the blog</a>.</p></div></section>'; return; }
+    if (!post) { host.innerHTML = '<section class="section"><div class="wrap"><p>Post not found. <a href="blog">Back to the blog</a>.</p></div></section>'; return; }
 
     // related: same category, else most recent others
     var related = P.filter(function (p) { return p.slug !== post.slug && p.cat[0] === post.cat[0]; });
@@ -16,7 +16,7 @@
     related = related.slice(0, 3);
 
     var relHTML = related.map(function (p) {
-      return '<a class="blog-card reveal" href="post.html?slug=' + encodeURIComponent(p.slug) + '">' +
+      return '<a class="blog-card reveal" href="post?slug=' + encodeURIComponent(p.slug) + '">' +
         '<div class="blog-thumb has-img" style="background-image:url(\'' + p.img + '\')"><span class="cat-tag" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92)" data-es="' + esc(p.cat[1]) + '">' + esc(p.cat[0]) + '</span></div>' +
         '<div class="blog-body"><span class="blog-date">' + esc(p.date) + '</span><h3>' + esc(p.title) + '</h3>' +
         '<span class="svc-more" data-es="Leer más">Read more ' + (I.arrow||'') + '</span></div></a>';
@@ -25,7 +25,7 @@
     host.innerHTML =
       '<section class="page-hero article-hero">' +
         '<div class="wrap">' +
-          '<div class="ph-crumb"><a href="index.html" data-es="Inicio">Home</a><span class="sep">/</span><a href="blog.html" data-es="Blog">Blog</a><span class="sep">/</span><span>' + esc(post.cat[0]) + '</span></div>' +
+          '<div class="ph-crumb"><a href="/" data-es="Inicio">Home</a><span class="sep">/</span><a href="blog" data-es="Blog">Blog</a><span class="sep">/</span><span>' + esc(post.cat[0]) + '</span></div>' +
           '<span class="cat-pill">' + esc(post.cat[0]) + ' · ' + esc(post.date) + '</span>' +
           '<h1>' + esc(post.title) + '</h1>' +
         '</div>' +
@@ -35,8 +35,8 @@
           '<img class="article-hero-img" src="' + post.img + '" alt="' + esc(post.title) + '" />' +
           '<div class="article-body">' + post.content + '</div>' +
           '<div class="article-foot">' +
-            '<a class="member-back" href="blog.html" data-es="← Volver al blog">← Back to all posts</a>' +
-            '<a class="btn btn-primary" href="quote.html" data-es="Obtener cotización gratis">Get a free quote</a>' +
+            '<a class="member-back" href="blog" data-es="← Volver al blog">← Back to all posts</a>' +
+            '<a class="btn btn-primary" href="quote" data-es="Obtener cotización gratis">Get a free quote</a>' +
           '</div>' +
         '</div>' +
       '</section>' +

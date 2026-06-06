@@ -4,5 +4,25 @@
   "buildCommand": "echo \"No build step — serving committed static site\"",
   "outputDirectory": "site",
   "framework": null,
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/services.html", "destination": "/services", "permanent": true },
+    { "source": "/blog.html", "destination": "/blog", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/quote.html", "destination": "/quote", "permanent": true },
+    { "source": "/social-media.html", "destination": "/social-media", "permanent": true },
+    { "source": "/post.html", "destination": "/post", "permanent": true },
+    { "source": "/feliciano-jiron.html", "destination": "/feliciano-jiron", "permanent": true },
+    { "source": "/maxwell-saavedra.html", "destination": "/maxwell-saavedra", "permanent": true },
+    { "source": "/engelbert-mora.html", "destination": "/engelbert-mora", "permanent": true },
+    { "source": "/gunnar-jiron.html", "destination": "/gunnar-jiron", "permanent": true },
+    { "source": "/services/auto.html", "destination": "/services/auto", "permanent": true },
+    { "source": "/services/home.html", "destination": "/services/home", "permanent": true },
+    { "source": "/services/life.html", "destination": "/services/life", "permanent": true },
+    { "source": "/services/business.html", "destination": "/services/business", "permanent": true },
+    { "source": "/services/renters.html", "destination": "/services/renters", "permanent": true },
+    { "source": "/services/boat.html", "destination": "/services/boat", "permanent": true }
+  ]
 }

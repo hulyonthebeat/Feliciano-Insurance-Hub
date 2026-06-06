@@ -47,7 +47,7 @@
     const posts = (window.JIRON_POSTS || []).slice(0, 3);
     const bg = document.getElementById("blog-grid");
     if (bg) bg.innerHTML = posts.map((p,i) => `
-      <a class="blog-card reveal" href="post.html?slug=${encodeURIComponent(p.slug)}" ${i? 'data-delay="'+(i*90)+'"':''}>
+      <a class="blog-card reveal" href="post?slug=${encodeURIComponent(p.slug)}" ${i? 'data-delay="'+(i*90)+'"':''}>
         <div class="blog-thumb has-img" style="background-image:url('${p.img}')"><span class="cat-tag" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92)" data-es="${esc(p.cat[1])}">${esc(p.cat[0])}</span></div>
         <div class="blog-body">
           <span class="blog-date">${esc(p.date)}</span>

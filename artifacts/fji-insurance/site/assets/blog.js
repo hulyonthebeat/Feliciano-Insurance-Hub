@@ -9,7 +9,7 @@
     var feat = P[0], rest = P.slice(1);
 
     var featHTML =
-      '<a class="blog-feature reveal" href="post.html?slug=' + encodeURIComponent(feat.slug) + '">' +
+      '<a class="blog-feature reveal" href="post?slug=' + encodeURIComponent(feat.slug) + '">' +
         '<div class="bf-thumb has-img" style="background-image:url(\'' + feat.img + '\')"></div>' +
         '<div class="bf-body">' +
           '<div style="display:flex;gap:10px;align-items:center;margin-bottom:8px">' +
@@ -23,7 +23,7 @@
       '</a>';
 
     var cardsHTML = rest.map(function (p, i) {
-      return '<a class="blog-card reveal" href="post.html?slug=' + encodeURIComponent(p.slug) + '"' + (i ? ' data-delay="' + ((i % 3) * 70) + '"' : '') + '>' +
+      return '<a class="blog-card reveal" href="post?slug=' + encodeURIComponent(p.slug) + '"' + (i ? ' data-delay="' + ((i % 3) * 70) + '"' : '') + '>' +
         '<div class="blog-thumb has-img" style="background-image:url(\'' + p.img + '\')">' +
           '<span class="cat-tag" style="position:absolute;top:14px;left:14px;background:rgba(255,255,255,.92)" data-es="' + esc(p.cat[1]) + '">' + esc(p.cat[0]) + '</span>' +
         '</div>' +
