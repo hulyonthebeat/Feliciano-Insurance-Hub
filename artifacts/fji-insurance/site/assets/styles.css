@@ -187,7 +187,7 @@ image-slot { display: block; }
 .brand .btext .jn { color: var(--red); }
 .brand .bmark { width: 46px; height: 46px; border-radius: 11px; background: var(--ink); color: var(--accent-2); display: grid; place-items: center; font-family: var(--serif); font-weight: 600; font-size: 1.5rem; box-shadow: var(--shadow-sm); }
 .brand .btext { display: flex; flex-direction: column; line-height: 1.05; }
-.brand .btext strong { font-family: var(--serif); font-weight: 600; font-size: 1.18rem; color: var(--ink); letter-spacing: -0.01em; }
+.brand .btext strong { font-family: var(--sans); font-weight: 700; font-size: 1.18rem; color: var(--ink); letter-spacing: -0.01em; }
 .brand .btext span { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-deep); font-weight: 700; }
 
 .nav { display: flex; align-items: center; gap: 4px; }
