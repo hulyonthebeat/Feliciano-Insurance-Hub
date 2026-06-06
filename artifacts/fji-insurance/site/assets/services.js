@@ -39,6 +39,24 @@
     document.getElementById("svc-quicknav").innerHTML = DET.map(d =>
       `<a class="pill-trust" href="#${d.id}"><span style="width:20px;height:20px;display:grid;place-items:center;color:var(--accent-deep)">${I[d.icon]}</span><span data-es="${d.es}">${d.name.replace(' Insurance','')}</span></a>`).join("");
 
+    function jumpToId(id) {
+      var target = document.getElementById(id);
+      if (!target) return;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 104, behavior: "auto" });
+    }
+
+    // Instant jump for quicknav pills (bypass global smooth-scroll, which feels abrupt).
+    document.getElementById("svc-quicknav").addEventListener("click", function (e) {
+      var a = e.target.closest("a[href^='#']");
+      if (!a) return;
+      var id = a.getAttribute("href").slice(1);
+      if (!document.getElementById(id)) return;
+      e.preventDefault();
+      jumpToId(id);
+      if (history.replaceState) history.replaceState(null, "", "#" + id);
+      else location.hash = id;
+    });
+
     // details
     document.getElementById("svc-details").innerHTML = DET.map(d => `
       <section class="svc-detail anchor" id="${d.id}">
@@ -67,8 +85,7 @@
     // (web fonts reflow the page, which would otherwise leave the jump short).
     function jumpToHash() {
       if (!location.hash || location.hash.length < 2) return;
-      var target = document.getElementById(location.hash.slice(1));
-      if (target) window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 104, behavior: "auto" });
+      jumpToId(location.hash.slice(1));
     }
     requestAnimationFrame(jumpToHash);
     setTimeout(jumpToHash, 300);
