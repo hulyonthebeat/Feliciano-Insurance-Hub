@@ -67,7 +67,7 @@
     </div>
     <div class="navrow wrap">
       <a class="brand" href="index.html" aria-label="Feliciano Jiron Insurance Agency">
-        <img class="blogo" src="assets/img/logo-emblem.png?v=1" alt="" />
+        <img class="blogo" src="assets/img/logo-icon.png" alt="" />
         <span class="btext"><strong><span class="fn">Feliciano</span> <span class="jn">Jiron</span></strong><span data-es="Agencia de Seguros">Insurance Agency</span></span>
       </a>
       <nav class="nav">
