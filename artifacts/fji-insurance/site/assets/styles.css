@@ -262,7 +262,7 @@ image-slot { display: block; }
 .footer-bottom a { color: var(--on-navy-muted); }
 .footer-bottom a:hover { color: var(--accent-2); }
 @media (max-width: 900px){ .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
-@media (max-width: 540px){ .footer-grid { grid-template-columns: 1fr; } }
+@media (max-width: 540px){ .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > div:first-child, .footer-grid > div:last-child { grid-column: 1 / -1; } }
 
 /* ---------- Cards / shared ---------- */
 .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); }
