@@ -1,0 +1,30 @@
+{
+  "name": "Feliciano Jiron Insurance Agency",
+  "short_name": "FJ Insurance",
+  "description": "Exceptional, bilingual insurance solutions in Las Vegas — auto, home, life, business, renters & boat coverage.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0c2747",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "assets/favicon/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/favicon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/favicon/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
