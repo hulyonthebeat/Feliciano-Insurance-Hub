@@ -1,7 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pnpm install",
-  "buildCommand": "pnpm --filter @workspace/fji-insurance run build",
-  "outputDirectory": "public",
+  "installCommand": "echo \"No install needed\"",
+  "buildCommand": "echo \"No build step — serving committed static site\"",
+  "outputDirectory": "artifacts/fji-insurance/site",
   "framework": null
 }

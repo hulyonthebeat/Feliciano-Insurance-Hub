@@ -1,0 +1,1 @@
+- [Vercel static deploy](vercel-static-deploy.md) — deploy fji-insurance to Vercel by serving committed site/ directly, no build; dashboard Root Directory drives output path.
