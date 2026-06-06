@@ -50,3 +50,5 @@ Thumbs.db
 
 # Vercel build output (generated at deploy time)
 /public
+artifacts/fji-insurance/public
+artifacts/fji-insurance/dist
