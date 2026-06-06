@@ -331,7 +331,12 @@
 
     // Page navigation crossfade: fade the current page out, then navigate.
     const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduceMotion) {
+    // Touch devices keep the current page on screen until the next one is ready,
+    // so fading out to blank before navigating just shows a jarring white flash
+    // during the (slower) mobile page load. Only run the fade-OUT where there is a
+    // real hover pointer (desktop); the CSS fade-IN (pageIn) still runs everywhere.
+    const noHover = window.matchMedia && window.matchMedia("(hover: none)").matches;
+    if (!reduceMotion && !noHover) {
       document.addEventListener("click", (e) => {
         if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
         if (!e.target || !e.target.closest) return;
