@@ -67,7 +67,7 @@
     </div>
     <div class="navrow wrap">
       <a class="brand" href="index.html" aria-label="Feliciano Jiron Insurance Agency">
-        <img class="blogo" src="assets/img/logo-emblem.png?v=5" alt="" />
+        <img class="blogo" data-nofade src="assets/img/logo-emblem.png?v=5" alt="" />
         <span class="btext"><strong><span class="fn">Feliciano</span> <span class="jn">Jiron</span></strong><span data-es="Agencia de Seguros">Insurance Agency</span></span>
       </a>
       <nav class="nav">
@@ -115,7 +115,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <div class="fbrand"><img src="assets/img/logo.png?v=2" alt="Feliciano Jiron Insurance Agency" /></div>
+          <div class="fbrand"><img data-nofade src="assets/img/logo.png?v=2" alt="Feliciano Jiron Insurance Agency" /></div>
           <p data-es="Soluciones de seguros excepcionales y un servicio al cliente sobresaliente, adaptado a las necesidades de cada cliente. Orgullosamente bilingüe y al servicio de Las Vegas.">Exceptional insurance solutions and outstanding customer service, tailored to each client's needs. Proudly bilingual and serving the Las Vegas community.</p>
           <div class="fsocial">
             <a href="https://www.facebook.com/profile.php?id=61567834461772" target="_blank" rel="noopener" aria-label="Facebook">${I.fb}</a>
@@ -359,7 +359,7 @@
         img.addEventListener("error", reveal, { once: true });
         setTimeout(reveal, 3000);
       };
-      document.querySelectorAll("img").forEach(fadeImg);
+      document.querySelectorAll("img:not([data-nofade])").forEach(fadeImg);
     }
 
     document.dispatchEvent(new CustomEvent("jironready"));
