@@ -307,12 +307,16 @@
         if (i > 0) el.style.animationDelay = Math.min(i * 70, 420) + "ms";
         groupIndex.set(parent, i + 1);
       }
-      io.observe(el);
+      // Elements already visible on first load appear instantly (no movement);
+      // only elements scrolled into view later get the animated reveal.
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("shown");
+      else io.observe(el);
     });
-    // Failsafe: reveal anything already in view (above the fold) so first paint is never blank;
-    // below-fold elements still animate in on scroll via the observer.
-    setTimeout(() => document.querySelectorAll(".reveal:not(.in)").forEach(el => {
-      if (el.getBoundingClientRect().top < window.innerHeight * 0.95) el.classList.add("in");
+    // Failsafe: never leave a reveal element hidden — if anything in view is still
+    // unrevealed shortly after load, show it instantly (no movement).
+    setTimeout(() => document.querySelectorAll(".reveal:not(.in):not(.shown)").forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.95) el.classList.add("shown");
     }), 500);
 
     // External links: open in a new tab, but if the environment blocks popups
