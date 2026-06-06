@@ -73,7 +73,7 @@
 .split-media { width: 100%; aspect-ratio: 4/3.4; min-height: 340px; border-radius: 22px; box-shadow: var(--shadow-lg);
   object-fit: cover; object-position: center 30%; background: var(--navy-800); }
 @media (max-width: 860px){ .split { grid-template-columns: 1fr; gap: 40px; } }
-.split-media.logo-media { object-fit: contain; background: #eef1f5; padding: 0; }
+.split-media.logo-media { aspect-ratio: 1/1; object-fit: cover; background: #eef1f5; padding: 0; }
 
 /* Contact */
 .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 44px; align-items: start; }
