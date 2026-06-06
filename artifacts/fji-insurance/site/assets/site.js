@@ -349,10 +349,22 @@
 
     // reveal on scroll
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        const t = en.target;
+        // Keep the tween on the compositor for its duration, then release the
+        // layer so we never accumulate hundreds of promoted elements.
+        t.style.willChange = "transform, opacity";
+        t.classList.add("in");
+        const clear = () => { t.style.willChange = "auto"; };
+        t.addEventListener("animationend", clear, { once: true });
+        setTimeout(clear, 1600);
+        io.unobserve(t);
+      });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
     // Auto-stagger reveal siblings (e.g. cards in a grid) for a cascading feel.
     const groupIndex = new Map();
+    const belowFold = [];
     document.querySelectorAll(".reveal").forEach((el) => {
       if (el.dataset.delay) {
         el.style.animationDelay = el.dataset.delay + "ms";
@@ -366,8 +378,24 @@
       // only elements scrolled into view later get the animated reveal.
       const r = el.getBoundingClientRect();
       if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("shown");
-      else io.observe(el);
+      else belowFold.push(el);
     });
+    // Hold off the animated (off-screen) reveals until the web fonts have loaded.
+    // Otherwise a font swap that lands mid-animation reflows the text and the
+    // letters visibly stutter. Above-fold text is already shown instantly above,
+    // so this only defers what's below the fold; a hard cap keeps it snappy if
+    // font loading hangs.
+    const startReveals = () => belowFold.forEach(el => {
+      if (!el.classList.contains("in") && !el.classList.contains("shown")) io.observe(el);
+    });
+    if (document.fonts && document.fonts.ready) {
+      let started = false;
+      const go = () => { if (started) return; started = true; startReveals(); };
+      document.fonts.ready.then(go);
+      setTimeout(go, 1200);
+    } else {
+      startReveals();
+    }
     // Failsafe: never leave a reveal element hidden — if anything in view is still
     // unrevealed shortly after load, show it instantly (no movement).
     setTimeout(() => document.querySelectorAll(".reveal:not(.in):not(.shown)").forEach(el => {
