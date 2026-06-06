@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<title>Get a Free Quote — Feliciano Jiron Insurance Agency</title>
+<meta name="description" content="Start your free, no-obligation insurance quote with Feliciano Jiron Insurance Agency. A real bilingual agent follows up with your best options." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="assets/quote.css" />
+<script>try{var t=localStorage.getItem('jiron_theme');if(t&&t!=='navy')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body data-page="quote">
+
+<header class="site-header" id="site-header"></header>
+<div class="mobile-nav" id="mobile-nav"></div>
+
+<section class="quote-hero">
+  <div class="wrap quote-shell">
+    <!-- Left rail -->
+    <aside class="q-rail">
+      <span class="eyebrow" data-es="Cotización gratis">Free quote</span>
+      <h1 class="q-title" data-es="Encontremos tu mejor cobertura.">Let's find your best coverage.</h1>
+      <p class="q-sub" data-es="Responde unas preguntas rápidas. Un agente bilingüe real revisará tus opciones y te contactará — sin compromiso.">Answer a few quick questions. A real bilingual agent reviews your options and follows up — no obligation, ever.</p>
+      <ol class="q-steps" id="q-steps"></ol>
+      <div class="q-rail-foot">
+        <div class="q-rail-trust">
+          <span class="stars" id="rail-stars"></span>
+          <span data-es="5.0 en Yelp · Clientes de Las Vegas">5.0 on Yelp · Las Vegas clients</span>
+        </div>
+        <div class="q-rail-call">
+          <span data-es="¿Prefieres hablar?">Prefer to talk?</span>
+          <a href="tel:7025220079" id="rail-phone"></a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Form card -->
+    <div class="q-card">
+      <div class="q-progress"><div class="q-progress-bar" id="q-bar"></div></div>
+      <form id="quoteForm" novalidate>
+
+        <!-- STEP 1 — Coverage -->
+        <fieldset class="q-step is-active" data-step="0">
+          <span class="q-step-tag" id="tag-0" data-es="Paso 1 de 4">Step 1 of 4</span>
+          <h2 class="q-step-title" data-es="¿Para qué necesitas una cotización?">What would you like a quote for?</h2>
+          <p class="q-step-help" data-es="Elige una cobertura para empezar.">Choose a coverage to get started.</p>
+          <div class="q-coverages" id="q-coverages"></div>
+          <p class="q-err" id="err-coverage" data-es="Selecciona una cobertura.">Please select a coverage.</p>
+        </fieldset>
+
+        <!-- STEP 2 — Service-specific questions -->
+        <fieldset class="q-step" data-step="1">
+          <span class="q-step-tag" id="tag-1" data-es="Paso 2 de 4">Step 2 of 4</span>
+          <h2 class="q-step-title" id="svc-title">Coverage details</h2>
+          <p class="q-step-help" id="svc-help" data-es="Estas son las preguntas que hacemos para esta póliza.">These are the questions we ask for this policy.</p>
+          <div id="q-service-fields"></div>
+          <p class="q-err" id="err-service" data-es="Completa los campos requeridos (*).">Please complete the required fields (*).</p>
+        </fieldset>
+
+        <!-- STEP 3 — Contact -->
+        <fieldset class="q-step" data-step="2">
+          <span class="q-step-tag" id="tag-2" data-es="Paso 3 de 4">Step 3 of 4</span>
+          <h2 class="q-step-title" data-es="¿A dónde enviamos tu cotización?">Where should we send your quote?</h2>
+          <p class="q-step-help" data-es="Un agente real — no un bot — te contactará.">A real agent — not a bot — will reach out.</p>
+          <div class="q-grid2">
+            <div class="q-field">
+              <label for="fname" data-es="Nombre">First name</label>
+              <input type="text" id="fname" name="fname" placeholder="Maria" data-es-ph="María" />
+            </div>
+            <div class="q-field">
+              <label for="lname" data-es="Apellido">Last name</label>
+              <input type="text" id="lname" name="lname" placeholder="Garcia" data-es-ph="García" />
+            </div>
+          </div>
+          <div class="q-field">
+            <label for="phone" data-es="Número de teléfono">Phone number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(702) 555-0123" data-es-ph="(702) 555-0123" />
+          </div>
+          <div class="q-field">
+            <label for="email" data-es="Correo electrónico">Email address</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" data-es-ph="tu@correo.com" />
+          </div>
+          <div class="q-field">
+            <label data-es="Método de contacto preferido">Preferred contact method</label>
+            <div class="q-radio-row" data-name="contactpref">
+              <button type="button" class="q-radio" data-val="email" data-es="Correo">Email</button>
+              <button type="button" class="q-radio" data-val="call" data-es="Llamada">Call</button>
+              <button type="button" class="q-radio" data-val="text" data-es="Texto">Text</button>
+            </div>
+          </div>
+          <div class="q-field">
+            <label data-es="Idioma preferido">Preferred language</label>
+            <div class="q-radio-row" data-name="lang">
+              <button type="button" class="q-radio" data-val="en" data-es="Inglés">English</button>
+              <button type="button" class="q-radio" data-val="es" data-es="Español">Spanish</button>
+            </div>
+          </div>
+          <p class="q-err" id="err-contact" data-es="Ingresa tu nombre y un teléfono o correo válido.">Please enter your name and a valid phone or email.</p>
+          <label class="q-consent">
+            <input type="checkbox" id="consent" />
+            <span data-es="Acepto que un agente me contacte sobre mi cotización. No compartimos tu información con terceros para marketing.">I agree to be contacted by an agent about my quote. We never share your information with third parties for marketing.</span>
+          </label>
+        </fieldset>
+
+        <!-- STEP 4 — Review -->
+        <fieldset class="q-step" data-step="3">
+          <span class="q-step-tag" id="tag-3" data-es="Paso 4 de 4">Step 4 of 4</span>
+          <h2 class="q-step-title" data-es="Revisa y envía">Review &amp; send</h2>
+          <p class="q-step-help" data-es="Confirma que todo se vea bien.">Make sure everything looks right.</p>
+          <div class="q-review" id="q-review"></div>
+        </fieldset>
+
+        <!-- SUCCESS -->
+        <div class="q-success" id="q-success" hidden>
+          <div class="q-success-ic" id="q-success-ic"></div>
+          <h2 class="q-step-title" data-es="¡Listo! Recibimos tu solicitud.">You're all set!</h2>
+          <p class="q-step-help" id="success-msg" data-es="Gracias. Un agente bilingüe te contactará muy pronto con tus opciones.">Thanks. A bilingual agent will reach out shortly with your options.</p>
+          <div class="q-success-cta">
+            <a class="btn btn-primary" href="index.html" data-es="Volver al inicio">Back to home</a>
+            <a class="btn btn-ghost" href="tel:7025220079" data-es="Llamar ahora">Call now</a>
+          </div>
+        </div>
+
+        <!-- NAV -->
+        <div class="q-nav" id="q-nav">
+          <button type="button" class="btn btn-ghost" id="q-back" data-es="Atrás">Back</button>
+          <button type="button" class="btn btn-primary" id="q-next" data-es="Continuar">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/quote.js"></script>
+</body>
+</html>

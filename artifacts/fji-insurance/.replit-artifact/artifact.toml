@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Feliciano Jiron Insurance Agency"
+version = "1.0.0"
+id = "artifacts/fji-insurance"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25498
+
+[services.development]
+run = "pnpm --filter @workspace/fji-insurance run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/fji-insurance", "run", "build" ]
+publicDir = "artifacts/fji-insurance/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25498"
+BASE_PATH = "/"

@@ -1,36 +1,35 @@
-# [Project name]
+# Feliciano Jiron Insurance Agency
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A static marketing website for Feliciano Jiron Insurance Agency, a Las Vegas insurance agency (auto, home, life, renters, business, boat). Includes home, services, about/team, blog, social media, contact, and quote pages.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- The site runs as the `fji-insurance` web artifact, served at `/`
+- `pnpm --filter @workspace/fji-insurance run dev` — serve the site locally (reads `PORT`, `BASE_PATH`)
+- `pnpm --filter @workspace/fji-insurance run build` — copy the site into `dist/public` for static production hosting
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Static multi-page site: hand-written HTML, CSS, and vanilla JS (no framework, no bundler)
+- Served in development by a tiny Express static server (`artifacts/fji-insurance/server.mjs`)
+- Production: static hosting of `dist/public`
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/fji-insurance/site/` — the entire website (HTML pages + `assets/` for CSS, JS, images, blog content)
+- `artifacts/fji-insurance/server.mjs` — dev static server
+- `artifacts/fji-insurance/build.mjs` — copies `site/` to `dist/public` for production
+- The pre-existing `api-server` and `mockup-sandbox` artifacts are scaffolding and are not used by this site
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The site was delivered as a complete, polished static build. It is served verbatim (byte-for-byte) rather than rebuilt in a framework, to preserve the original design and behavior exactly.
+- All forms (contact, quote) are client-side only — they show success states in-browser and do not post to a backend.
+- `assets/image-slot.js` fetches an optional `.image-slots.state.json` sidecar and degrades gracefully if absent.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+Public-facing insurance agency website with service overviews, a team/about section, a blog, a social media page, EN/ES language toggle, a light/dark theme toggle, and contact/quote request forms.
 
 ## User preferences
 
@@ -38,7 +37,7 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Asset and inter-page links are relative, so the site must be served at the root (`/`) base path.
 
 ## Pointers
 

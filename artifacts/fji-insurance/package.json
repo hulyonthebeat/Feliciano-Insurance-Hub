@@ -1,0 +1,13 @@
+{
+  "name": "@workspace/fji-insurance",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "export NODE_ENV=development && node server.mjs",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

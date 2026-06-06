@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<title>Contact — Feliciano Jiron Insurance Agency</title>
+<meta name="description" content="Visit, call, or message Feliciano Jiron Insurance Agency at 2585 S. Nellis Blvd., Las Vegas, NV 89121. (702) 522-0079." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="assets/pages.css" />
+<script>try{var t=localStorage.getItem('jiron_theme');if(t&&t!=='navy')document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body data-page="contact">
+
+<header class="site-header" id="site-header"></header>
+<div class="mobile-nav" id="mobile-nav"></div>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="ph-crumb"><a href="index.html" data-es="Inicio">Home</a><span class="sep">/</span><span data-es="Contacto">Contact</span></div>
+    <span class="eyebrow" data-es="Estamos aquí para ayudar">We're here to help</span>
+    <h1 data-es="Hablemos de tu <em>cobertura</em>.">Let's talk about your <em>coverage</em>.</h1>
+    <p class="ph-sub" data-es="Llámanos, escríbenos o pásate por la oficina. Un agente bilingüe siempre está listo para ayudarte.">Call, message, or stop by the office. A bilingual agent is always ready to help.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap contact-grid">
+    <!-- INFO -->
+    <div class="contact-info">
+      <div class="ci-card reveal"><div class="ci-ic" data-ic="pin"></div><div><h3 data-es="Visítanos">Visit us</h3><div class="ci-val"><a href="https://www.google.com/maps/place/2585+S+Nellis+Blvd,+Las+Vegas,+NV+89121" target="_blank" rel="noopener">2585 S. Nellis Blvd.</a></div><div class="ci-sub">Las Vegas, NV 89121</div></div></div>
+      <div class="ci-card reveal" data-delay="80"><div class="ci-ic" data-ic="phone"></div><div><h3 data-es="Llámanos">Call us</h3><div class="ci-val"><a href="tel:7025220079">(702) 522-0079</a></div><div class="ci-sub" data-es="Hablamos español e inglés">English & Spanish spoken</div></div></div>
+      <div class="ci-card reveal" data-delay="160"><div class="ci-ic" data-ic="clock"></div><div style="flex:1"><h3 data-es="Horario">Hours</h3>
+        <ul class="hours-list" id="hours-list"></ul>
+      </div></div>
+    </div>
+
+    <!-- FORM -->
+    <div class="contact-form reveal" data-delay="100">
+      <div id="cf-form-wrap">
+        <h2 data-es="Envíanos un mensaje">Send us a message</h2>
+        <p class="cf-sub" data-es="Te respondemos el mismo día hábil.">We reply the same business day.</p>
+        <form id="contactForm" novalidate>
+          <div class="cf-row">
+            <div class="cf-field"><label for="cf-name" data-es="Nombre completo">Full name</label><input type="text" id="cf-name" placeholder="Maria Garcia" data-es-ph="María García" /></div>
+            <div class="cf-field"><label for="cf-phone" data-es="Teléfono">Phone</label><input type="tel" id="cf-phone" placeholder="(702) 555-0123" data-es-ph="(702) 555-0123" /></div>
+          </div>
+          <div class="cf-field"><label for="cf-email" data-es="Correo electrónico">Email</label><input type="email" id="cf-email" placeholder="you@email.com" data-es-ph="tu@correo.com" /></div>
+          <div class="cf-field"><label for="cf-topic" data-es="¿En qué podemos ayudarte?">How can we help?</label>
+            <select id="cf-topic">
+              <option value="" data-es="Selecciona un tema">Select a topic</option>
+              <option data-es="Seguro de Auto">Auto Insurance</option>
+              <option data-es="Seguro de Hogar">Home Insurance</option>
+              <option data-es="Seguro de Vida">Life Insurance</option>
+              <option data-es="Seguro de Negocio">Business Insurance</option>
+              <option data-es="Seguro de Inquilinos">Renters Insurance</option>
+              <option data-es="Seguro de Embarcación">Boat Insurance</option>
+              <option data-es="Servicios de notario">Notary Services</option>
+              <option data-es="Otro">Something else</option>
+            </select>
+          </div>
+          <div class="cf-field"><label for="cf-msg" data-es="Mensaje">Message</label><textarea id="cf-msg" placeholder="Tell us a bit about what you're looking for…" data-es-ph="Cuéntanos un poco sobre lo que buscas…"></textarea></div>
+          <p class="q-err" id="cf-err" data-es="Ingresa tu nombre y un correo o teléfono válido.">Please enter your name and a valid email or phone.</p>
+          <button type="submit" class="btn btn-primary btn-lg" style="width:100%" data-es="Enviar mensaje">Send message</button>
+        </form>
+      </div>
+      <div class="cf-success" id="cf-success">
+        <div class="cs-ic" id="cf-success-ic"></div>
+        <h2 data-es="¡Mensaje enviado!">Message sent!</h2>
+        <p class="cf-sub" id="cf-success-msg" data-es="Gracias. Un agente bilingüe te responderá muy pronto.">Thanks. A bilingual agent will get back to you shortly.</p>
+        <a class="btn btn-ghost" href="index.html" data-es="Volver al inicio">Back to home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section style="padding-bottom:90px">
+  <div class="wrap">
+    <div class="reveal" style="border-radius:22px;overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--line)">
+      <iframe class="map-embed" title="Feliciano Jiron Insurance Agency location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps?q=2585+S+Nellis+Blvd,+Las+Vegas,+NV+89121&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <h2 class="h2" data-es="¿Prefieres una cotización rápida?">Prefer a quick quote instead?</h2>
+    <p data-es="Responde unas preguntas y te enviamos tus mejores opciones.">Answer a few questions and we'll send your best options.</p>
+    <div class="cta-row"><a class="btn btn-on-navy btn-lg" href="quote.html" data-es="Iniciar mi cotización">Start my quote</a></div>
+  </div>
+</section>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/contact.js"></script>
+</body>
+</html>
