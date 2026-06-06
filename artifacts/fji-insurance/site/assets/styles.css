@@ -273,8 +273,8 @@ image-slot { display: block; }
 .stars svg { width: 16px; height: 16px; }
 
 .reveal { opacity: 0; }
-.reveal.in { animation: revealIn .7s cubic-bezier(.2,.7,.2,1) both; }
-@keyframes revealIn { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+.reveal.in { animation: revealIn 1s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes revealIn { from { opacity: 0; transform: translateY(34px); } to { opacity: 1; transform: none; } }
 
 /* ---------- Motion & micro-interactions ---------- */
 /* Animated nav underline */
@@ -345,7 +345,7 @@ body { animation: pageIn .34s ease both; }
 /* Seamless image loading: photos fade in once decoded instead of popping in.
    JS adds .img-fade ONLY to images that are still loading, so cached images
    stay instant and a JS failure can never hide an image. */
-img.img-fade { opacity: 0; transition: opacity .55s ease; }
+img.img-fade { opacity: 0; transition: opacity .8s ease; }
 img.img-fade.is-loaded { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce){
