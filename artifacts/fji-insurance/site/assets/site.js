@@ -115,7 +115,7 @@
     <div class="wrap">
       <div class="footer-grid">
         <div>
-          <div class="fbrand"><img src="assets/img/logo-footer.png?v=3" alt="Feliciano Jiron Insurance Agency" /></div>
+          <div class="fbrand"><img src="assets/img/logo.png?v=2" alt="Feliciano Jiron Insurance Agency" /></div>
           <p data-es="Soluciones de seguros excepcionales y un servicio al cliente sobresaliente, adaptado a las necesidades de cada cliente. Orgullosamente bilingüe y al servicio de Las Vegas.">Exceptional insurance solutions and outstanding customer service, tailored to each client's needs. Proudly bilingual and serving the Las Vegas community.</p>
           <div class="fsocial">
             <a href="https://www.facebook.com/profile.php?id=61567834461772" target="_blank" rel="noopener" aria-label="Facebook">${I.fb}</a>
