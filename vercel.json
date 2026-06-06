@@ -1,0 +1,7 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "pnpm install",
+  "buildCommand": "pnpm --filter @workspace/fji-insurance run build",
+  "outputDirectory": "artifacts/fji-insurance/dist/public",
+  "framework": null
+}
