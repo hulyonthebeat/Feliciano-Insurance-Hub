@@ -174,8 +174,16 @@
 
   /* ---------------- Theme ---------------- */
   function applyTheme(theme) {
-    if (theme && theme !== "brand") document.documentElement.setAttribute("data-theme", theme);
-    else document.documentElement.removeAttribute("data-theme");
+    const root = document.documentElement;
+    // Brief crossfade between palettes — only after the initial load.
+    if (applyTheme._init) {
+      root.classList.add("theme-anim");
+      clearTimeout(applyTheme._t);
+      applyTheme._t = setTimeout(() => root.classList.remove("theme-anim"), 500);
+    }
+    applyTheme._init = true;
+    if (theme && theme !== "brand") root.setAttribute("data-theme", theme);
+    else root.removeAttribute("data-theme");
     try { localStorage.setItem("jiron_theme", theme || "brand"); } catch(e){}
   }
   window.jironSetTheme = applyTheme;
@@ -263,10 +271,24 @@
       b.addEventListener("click", () => applyLang(b.dataset.lang));
     });
 
-    // scroll shadow
+    // scroll shadow + reading-progress bar
     const hdr = header;
-    const onScroll = () => { if (hdr) hdr.classList.toggle("scrolled", window.scrollY > 8); };
-    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    const prog = document.createElement("div");
+    prog.className = "scroll-progress";
+    prog.setAttribute("aria-hidden", "true");
+    document.body.appendChild(prog);
+    let ticking = false;
+    const render = () => {
+      if (hdr) hdr.classList.toggle("scrolled", window.scrollY > 8);
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      prog.style.transform = "scaleX(" + (max > 0 ? Math.max(0, Math.min(window.scrollY / max, 1)) : 0) + ")";
+      ticking = false;
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(render); } };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    render();
 
     // mobile menu
     const burger = document.querySelector(".burger");
@@ -281,8 +303,17 @@
     const io = new IntersectionObserver((entries) => {
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
     }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-    document.querySelectorAll(".reveal").forEach((el, i) => {
-      if (el.dataset.delay) el.style.animationDelay = el.dataset.delay + "ms";
+    // Auto-stagger reveal siblings (e.g. cards in a grid) for a cascading feel.
+    const groupIndex = new Map();
+    document.querySelectorAll(".reveal").forEach((el) => {
+      if (el.dataset.delay) {
+        el.style.animationDelay = el.dataset.delay + "ms";
+      } else {
+        const parent = el.parentElement;
+        const i = groupIndex.get(parent) || 0;
+        if (i > 0) el.style.animationDelay = Math.min(i * 70, 420) + "ms";
+        groupIndex.set(parent, i + 1);
+      }
       io.observe(el);
     });
     // Failsafe: reveal anything already in view (above the fold) so first paint is never blank;
