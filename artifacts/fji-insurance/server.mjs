@@ -20,6 +20,21 @@ const isDev = process.env.NODE_ENV !== "production";
 const app = express();
 
 const router = express.Router();
+
+// The "/services" overview lives in `services.html`, which collides with the
+// `services/<id>` subpage directory. express.static would 301 "/services" to
+// "/services/" (a directory with no index file) and 404. Serve the overview
+// explicitly at the no-trailing-slash URL — so its root-relative asset links
+// resolve from "/" — and fold the trailing-slash variant back onto it.
+router.get("/services", (req, res, next) => {
+  if (req.path !== "/services") {
+    return res.redirect(301, path.posix.join(basePath, "services"));
+  }
+  res.sendFile(path.join(siteDir, "services.html"), (err) => {
+    if (err) next(err);
+  });
+});
+
 router.use(
   express.static(siteDir, {
     extensions: ["html"],
