@@ -154,6 +154,45 @@
 
   function esc(s){ return String(s).replace(/"/g,'&quot;'); }
 
+  /* ---------------- Cookie consent ---------------- */
+  function buildConsent() {
+    return `
+    <div class="cookie-consent" id="cookie-consent" role="dialog" aria-live="polite" aria-label="Cookie consent">
+      <div class="cc-inner">
+        <span class="cc-emoji" aria-hidden="true">🍪</span>
+        <div class="cc-text">
+          <strong data-es="Permitir cookies">Allow cookies</strong>
+          <p data-es="Usamos cookies para recordar tus preferencias y cargar el sitio más rápido en tu próxima visita.">We use cookies to remember your preferences and load the site faster on your next visit.</p>
+        </div>
+        <div class="cc-actions">
+          <button class="cc-btn cc-decline" id="cc-decline" type="button" data-es="Rechazar">Decline</button>
+          <button class="cc-btn cc-accept" id="cc-accept" type="button" data-es="Permitir">Allow</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function setupConsent() {
+    let choice = null;
+    try { choice = localStorage.getItem("jiron_cookie_consent"); } catch(e){}
+    if (choice === "accepted" || choice === "declined") return;
+    const el = document.getElementById("cookie-consent");
+    if (!el) return;
+    requestAnimationFrame(() => el.classList.add("show"));
+    const close = (val) => {
+      try { localStorage.setItem("jiron_cookie_consent", val); } catch(e){}
+      if (val === "accepted") {
+        try { document.cookie = "jiron_consent=1; max-age=" + (60*60*24*365) + "; path=/; SameSite=Lax"; } catch(e){}
+      }
+      el.classList.remove("show");
+      setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 400);
+    };
+    const a = document.getElementById("cc-accept");
+    const d = document.getElementById("cc-decline");
+    if (a) a.addEventListener("click", () => close("accepted"));
+    if (d) d.addEventListener("click", () => close("declined"));
+  }
+
   /* ---------------- i18n ---------------- */
   function applyLang(lang) {
     document.documentElement.setAttribute("lang", lang === "es" ? "es" : "en");
@@ -258,6 +297,9 @@
     const mob = document.getElementById("mobile-nav");
     if (mob) mob.innerHTML = buildMobileNav();
 
+    // cookie consent (injected before applyLang so it gets translated)
+    document.body.insertAdjacentHTML("beforeend", buildConsent());
+
     // theme first (no flash handled by inline head script)
     let theme = "brand"; try { theme = localStorage.getItem("jiron_theme") || "brand"; } catch(e){}
     applyTheme(theme);
@@ -361,6 +403,8 @@
       };
       document.querySelectorAll("img:not([data-nofade])").forEach(fadeImg);
     }
+
+    setupConsent();
 
     document.dispatchEvent(new CustomEvent("jironready"));
     buildTweaks();
